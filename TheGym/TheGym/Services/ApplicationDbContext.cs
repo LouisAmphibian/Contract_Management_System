@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using TheGym.Models;
 
-namespace TheGym.Models
+namespace TheGym.Services
 {
     public class ApplicationDbContext : DbContext
     {
