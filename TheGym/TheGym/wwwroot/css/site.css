@@ -1,6 +1,13 @@
+*{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 html {
-  font-size: 14px;
-  scroll-behavior: smooth;
+    font-size: 14px;
+    scroll-behavior: smooth;
+    
 }
 
 @media (min-width: 768px) {
@@ -13,31 +20,65 @@ html {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-
-:root{
-    --section-margin: 20px;
+:root {
+    --section-margin: 25px;
+    --big-font: 4.5rem;
+    --h2-font: 3.3rem;
+    --h3-font: 2rem;
+    --normal-font: 1rem;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+   
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    width: 100%;
 }
 
+/*Landing section*/
 .welcome {
     height: 700px;
-    background-color: blue;
+    background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('/images/gym-bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
     display: inline-block;
     width: 100%;
     margin-bottom: var(--section-margin);
+    margin-top: 10px;
+    position: relative;
 }
 
+.welcome .landing-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: 650px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    z-index: 1;
+    padding: 20px;
+    /* background: rgba(0, 0, 0, 0.5); Adds a darker background behind the text */
+    border-radius: 10px;
+    }
+
+.welcome .landing-text h2{
+    font-size: 3.5rem;
+}
+
+.welcome .landing-text h3 {
+    letter-spacing: 5px;
+    font-size: 1.5rem;
+}
+
+/*Program Section*/
 .program {
     height: 700px;
-    background-color: green;
+    background-color: gray;
     display: inline-block;
     width: 100%;
     margin-bottom: var(--section-margin);
@@ -45,7 +86,7 @@ body {
 
 .schedule {
     height: 700px;
-    background-color: purple;
+    background-color: lightgray;
     display: inline-block;
     width: 100%;
     margin-bottom: var(--section-margin);
@@ -53,12 +94,88 @@ body {
 
 .events {
     height: 700px;
-    background-color: red;
+    background-color: gray;
     display: inline-block;
     width: 100%;
     margin-bottom: var(--section-margin);
 }
 
+/*Claims Section*/
+.claims {
+    height: 700px;
+    background-color: lightgray;
+    display: grid;
+    width: 100%;
+    margin-bottom: var(--section-margin);
+    overflow-x: hidden;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 50px;
+    padding: 5rem 0;
+}
+
+.claims .imgWrapper{
+    overflow: hidden;
+    height: 400px;
+    width: 400px;
+}
+
+.claims .imgWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.claims .imgWrapper:hover img {
+    transform: scale(1.25);
+}
+
+.claims .contentWrapper{
+    width: 100%;
+    display: flex;   
+    justify-content: center;
+    align-items: center;
+    padding-right: 30px;
+
+}
+
+.claims .contentWrapper h2{
+    font-size: 40px;
+    font-weight: 700;
+    color: #383f47;
+    padding-bottom: 20px;
+}
+
+.claims .contentWrapper p {
+    font-size: 20px;
+    line-height: 25px;
+    padding-bottom: 25px;
+    font-weight: 500;
+
+}
+
+.claims .contentWrapper a {
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: #383f47;
+    color: #fff;
+    padding: 15px 40px;
+    letter-spacing: 1px;
+    user-select: none;
+    border: 1px solid black;
+
+}
+
+.claims .contentWrapper a:hover {
+    border: 1px solid black;
+    background: indianred;
+    transition-delay: 0.1s;
+    color: #fff;
+    transform: translateY(-3px)
+}
+
+/*About Section*/
 .about {
     height: 700px;
     background-color: gray;
@@ -67,10 +184,15 @@ body {
     margin-bottom: var(--section-margin);
 }
 
-.contact {
-    height: 700px;
-    background-color: gold;
-    display: inline-block;
+.container {
+    /*
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+   */
+    padding: 0;
     width: 100%;
-    margin-bottom: var(--section-margin);
+    overflow-x: hidden;
 }
+
