@@ -1,25 +1,35 @@
-*{
-    padding:0;
+/* Importing Poppins font from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+/* Resetting default padding and margins, using border-box model */
+*,
+*::before,
+*::after {
+    padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
+/* Setting base font-size and smooth scrolling for the entire page */
 html {
     font-size: 14px;
     scroll-behavior: smooth;
-    
+ 
 }
 
+/* Adjusting font size for larger screens */
 @media (min-width: 768px) {
   html {
     font-size: 16px;
   }
 }
 
+/* Custom focus styles for buttons, links, and form elements */
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
+/* Root variables for spacing and font sizes */
 :root {
     --section-margin: 25px;
     --big-font: 4.5rem;
@@ -28,18 +38,135 @@ html {
     --normal-font: 1rem;
 }
 
-html {
-    position: relative;
-    min-height: 100%;
-   
-}
-
-body {
-    margin-bottom: 60px;
+/* Setting full width and height for the HTML and body tags */
+html, body {
     width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+    background-color: #190482; /* Sets background color */
 }
 
-/*Landing section*/
+
+body, input {
+    font-family: "Poppins", sans-serif;
+}
+
+/* Container full width, with no extra margins or padding */
+.container {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Main section where the form is located */
+/* The form is centered vertically and horizontally using flexbox */
+main .main {
+    width: 100%;
+    min-height: 100vh; /* Ensures the section occupies full viewport height */
+    overflow: hidden;
+    background-color: #190482;
+    padding: 2rem; /* Padding around the form */
+    display: flex;
+    align-items: center; /* Centers the form vertically */
+    justify-content: center; /* Centers the form horizontally */
+}
+
+footer {
+    background-color: black;
+}
+
+.box {
+    position: relative;
+    width: 100%;
+    max-width: 1020px;
+    height: 640px;
+    background-color: #fff; /* White background for the form box */
+    border-radius: 3.3rem; /* Rounded corners */
+    box-shadow: 0 60px 40px -30px rgba(0, 0, 0, 0.27);
+}
+
+/* Inner box to further center content */
+.inner-box {
+    position: absolute;
+    width: calc(100% - 4.1rem);
+    height: calc(100% - 4.1rem);
+    top: 50%; /* Moves it 50% from the top */
+    left: 50%; /* Moves it 50% from the left */
+    transform: translate(-50%, -50%); /* Centers it exactly in the middle */
+}
+
+/* Form container on the left side, using grid for layout */
+.forms-wrap {
+    position: absolute;
+    height: 100%;
+    width: 45%; /* Takes 45% of the box width */
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 1fr; /* Single column */
+    grid-template-rows: 1fr; /* Single row */
+    transition: 0.8s ease-in-out; /* Smooth transition for changes */
+}
+
+/* Form element inside the container */
+/* Flexbox is used to stack items vertically and distribute space evenly */
+form {
+    max-width: 260px; /* Maximum width of the form */
+    width: 100%;
+    margin: 0 auto; /* Center the form horizontally */
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Stack form elements vertically */
+    justify-content: space-evenly; /* Distribute space evenly between elements */
+    grid-column: 1 / 2; /* Grid positioning */
+    grid-row: 1 / 2;
+    transition: opacity 0.02s 0.4s; /* Smooth transition for opacity */
+}
+
+ /* Hidden sign-up form */
+    form.sign-up-form {
+        opacity: 0;
+        pointer-events: none; /* Makes it non-interactive */
+    }
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 35px;
+    margin-right: 0.3rem;
+}
+
+ .logo h4 {
+    font-size: 1.1rem;
+    margin-top: -9px;
+    letter-spacing: -0.5px;
+    color: #151111;
+ }
+
+.heading h2 {
+    font-size: 2.1rem;
+    font-weight: 600;
+    color: #151111;
+}
+
+.heading h6 {
+    color: #bababa;
+    font-weight: 400;
+    font-size: 0.75rem;
+    display: inline;
+}
+
+/*
+//Landing section
 .welcome {
     height: 700px;
     background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('/images/gym-bg.jpg');
@@ -62,7 +189,7 @@ body {
     color: #fff;
     z-index: 1;
     padding: 20px;
-    /* background: rgba(0, 0, 0, 0.5); Adds a darker background behind the text */
+    // background: rgba(0, 0, 0, 0.5); Adds a darker background behind the text //
     border-radius: 10px;
     }
 
@@ -75,7 +202,7 @@ body {
     font-size: 1.5rem;
 }
 
-/*Program Section*/
+//Program Section
 .program {
     height: 700px;
     background-color: gray;
@@ -100,7 +227,7 @@ body {
     margin-bottom: var(--section-margin);
 }
 
-/*Claims Section*/
+//Claims Section//
 .claims {
     height: 700px;
     background-color: lightgray;
@@ -175,7 +302,7 @@ body {
     transform: translateY(-3px)
 }
 
-/*About Section*/
+//About Section//
 .about {
     height: 700px;
     background-color: gray;
@@ -184,15 +311,6 @@ body {
     margin-bottom: var(--section-margin);
 }
 
-.container {
-    /*
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 0;
-    padding-right: 0;
-   */
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden;
-}
 
+
+*/
