@@ -130,27 +130,29 @@ form {
 }
 
  /* Hidden sign-up form */
-    form.sign-up-form {
+ form.sign-up-form {
         opacity: 0;
         pointer-events: none; /* Makes it non-interactive */
-    }
 
+}
+
+/* Flexbox container for logo*/
 .logo {
     display: flex;
     align-items: center;
 }
 
 .logo img {
-    width: 35px;
-    margin-right: 0.3rem;
-}
+   width: 35px;
+    margin-right: 0.3rem; /** Small space between*/
+    }
 
- .logo h4 {
-    font-size: 1.1rem;
-    margin-top: -9px;
-    letter-spacing: -0.5px;
-    color: #151111;
- }
+    .logo h4 {
+        font-size: 1.1rem;
+        margin-top: -9px;
+        letter-spacing: -0.5px; /* Slightly tighter letter spacing */
+        color: #151111;
+    }
 
 .heading h2 {
     font-size: 2.1rem;
@@ -165,14 +167,16 @@ form {
     display: inline;
 }
 
+/* Styling for toggle text/link (like "Sign Up" or "Log In") */
 .toggle {
     color: #151111;
-    text-decoration: none;
+    text-decoration: none; /* Removing underline from the link */
     font-size: 0.75rem;
     font-weight: 500;
     transition: 0.3s;
 }
 
+/* Hover effect */
 .toggle:hover {
     color: #8371fd;
 }
@@ -197,6 +201,7 @@ form {
     transition: 0.4s;
 }
 
+/* Styling for the input field label */
 label {
     position: absolute;
     left: 0;
@@ -204,20 +209,117 @@ label {
     transform: translateY(-50%);
     font-size: 0.95rem;
     color: #bbb;
-    pointer-events: none;
+    pointer-events: none; /* Prevent label from interfering with input interaction */
     transition: 0.4s;
 }
 
+/* Active state for input field (e.g., when focused or has content) */
 .input-field.active {
    border-bottom-color: #151111;
 }
 
+/* Moving the label upwards and reducing font size when the input is active */
+/*The + symbol is called the adjacent sibling combinator in CSS. It selects an element
+        that immediately follows another element in the DOM, 
+        and both elements must share the same parent.*/
 .input-field.active + label {
    font-size: 0.75rem;
    top: -2px;
 }
 
-/*
+/*Sign button*/
+.sign-btn {
+    display: inline-block;
+    width: 100%;
+    height: 43px;
+    background-color: #151111;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.8rem;
+    font-size: 0.8rem;
+    margin-bottom: 2rem;
+    transition: 0.3s;
+}
+
+ .sign-btn:hover {
+   background-color: #8371fd;
+}
+
+.text {
+  color: #bbb;
+  font-size: 0.7rem;
+}
+
+.text a {
+   color: #bbb;
+   transition: 0.3s;
+    }
+
+.text a:hover {
+ color: #8371fd;
+}
+
+/* 
+  When the 'sign-up-mode' class is added to the 'main' element, 
+  the 'sign-in-form' becomes invisible and non-interactive 
+  by setting opacity to 0 and pointer-events to none.
+*/
+.main.sign-up-mode form.sign-in-form {
+    opacity: 0;
+    pointer-events: none;/* Prevent any interaction with the sign-in form */
+}
+
+/* 
+  When in 'sign-up-mode', the 'sign-up-form' becomes fully visible and interactive 
+  by setting opacity to 1 and pointer-events to all.
+*/
+.main.sign-up-mode form.sign-up-form {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* 
+  When in 'sign-up-mode', the '.forms-wrap' (container for the forms) 
+  shifts its position to 55% from the left, likely bringing the sign-up form into view.
+*/
+.main.sign-up-mode .forms-wrap {
+    left: 55%;
+}
+
+/* 
+  When in 'sign-up-mode', the '.carousel' (possibly an image slider) 
+  moves to the left (0%), bringing it into view.
+*/
+.main.sign-up-mode .carousel {
+    left: 0%;
+}
+
+.carousel {
+    position: absolute;
+    height: 100%;
+    width: 55%;
+    left: 45%;
+    top: 0;
+    background-color: #ffe0d2;
+    border-radius: 2rem;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    padding-bottom: 2rem;
+    overflow: hidden;
+    transition: 0.8s ease-in-out;
+}
+
+.images-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+
+
+/*OLD CODE
+
 //Landing section
 .welcome {
     height: 700px;
