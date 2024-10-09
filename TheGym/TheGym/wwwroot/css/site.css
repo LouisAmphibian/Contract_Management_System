@@ -348,6 +348,59 @@ label {
     transform: none;
 }
 
+/*text show*/
+.text-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.text-wrap {
+    max-height: 2.2rem;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+}
+
+.text-group {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transform: translateY(0);
+    transition: 0.5s;
+}
+
+.text-group h2 {
+ line-height: 2.2rem;
+ font-weight: 600;
+ font-size: 1.6rem;
+
+}
+
+/*bullets*/
+.bullets {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bullets span {
+   display: block;
+   width: 0.5rem;
+   height: 0.5rem;
+   background-color: #aaa;
+   margin: 0 0.25rem;
+   border-radius: 50%;
+   cursor: pointer;
+   transition: 0.3s;
+
+}
+
+.bullets span.active {
+ width: 1.1rem;
+ background-color: #151111;
+  border-radius: 1rem;
+}
 
 /*OLD CODE
 
