@@ -1,34 +1,34 @@
 ﻿/*my dom variables*/
-const input = document.querySelectorAll(".input-field");
-const toggle_btn = document.querySelector(".toggle");
-const main = document.querySelectorAll(".main");
+const inputs = document.querySelectorAll(".input-field");
+const toggle_btn = document.querySelectorAll(".toggle");
+const mainElement = document.querySelector(".main");
 const bullets = document.querySelectorAll(".bullets span");
 const images = document.querySelectorAll(".image");
 
 inputs.forEach((inp) => {
     inp.addEventListener("focus", () => {
-        inp.classLIst.add("active");
-    });
+        inp.classList.add("active");
+    }); 
 
     inp.addEventListener("blur", () => {
-        if (inp.value != "") {
+        if (inp.value !== "") {
             return;
         }
-        inp.classLIst.remove("active");
+        inp.classList.remove("active");
     });
 });
 
 toggle_btn.forEach((btn) => {
     btn.addEventListener("click", () => {
-        main.classLIst.toggle("sign-up-mode");
+        mainElement.classList.toggle("sign-up-mode");
     });
 });
 
-//fuction to slide the forms
-function moveSlider() {
-    let index = this.dataset.value;
+//fuction to slide to th next images carousel
+function moveSlider(event) {
+    let index = event.target.dataset.value;
 
-    let currentImage = document.querySelector('img-${index}');
+    let currentImage = document.querySelector('.img-${index}');
 
     images.forEach((img) => img.classList.remove("show"));
     currentImage.classList.add("show");
@@ -45,3 +45,5 @@ function moveSlider() {
 bullets.forEach((bullet) => {
     bullet.addEventListener("click", moveSlider);
 });
+
+    /*why is my javascript not working or my function. It does not toggle, doesnt switch from sign in to sign up*/
