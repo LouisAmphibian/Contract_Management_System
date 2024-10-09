@@ -25,8 +25,8 @@ toggle_btn.forEach((btn) => {
 });
 
 //fuction to slide to th next images carousel
-function moveSlider(event) {
-    let index = event.target.dataset.value;
+function moveSlider() {
+    let index = this.dataset.value;
 
     let currentImage = document.querySelector('.img-${index}');
 
@@ -46,4 +46,4 @@ bullets.forEach((bullet) => {
     bullet.addEventListener("click", moveSlider);
 });
 
-    /*why is my javascript not working or my function. It does not toggle, doesnt switch from sign in to sign up*/
+    
