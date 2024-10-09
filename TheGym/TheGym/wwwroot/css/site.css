@@ -295,11 +295,17 @@ label {
     left: 0%;
 }
 
+/* 
+  The 'carousel' section is an absolute-positioned container with a width of 55% and a height of 100%. 
+  It is positioned on the right side of the screen (45% from the left). 
+  The carousel is styled with a background color, rounded corners, and grid layout for its content.
+  A smooth transition effect is applied to allow animation when shifting.
+*/
 .carousel {
     position: absolute;
     height: 100%;
     width: 55%;
-    left: 45%;
+    left: 45%; /* Positioned 45% from the left, occupying the right side */
     top: 0;
     background-color: #ffe0d2;
     border-radius: 2rem;
@@ -307,7 +313,7 @@ label {
     grid-template-rows: auto 1fr;
     padding-bottom: 2rem;
     overflow: hidden;
-    transition: 0.8s ease-in-out;
+    transition: 0.8s ease-in-out; /* Smooth transition for animations */
 }
 
 .images-wrapper {
@@ -316,6 +322,31 @@ label {
     grid-template-rows: 1fr;
 }
 
+/*Images*/
+.image {
+    width: 100%;
+    grid-column: 1/2;
+    grid-row: 1/2;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.5s;
+}
+
+.img-1 {
+    transform: translate(0, -50px);
+}
+
+.img-2 {
+    transform: scale(0.4, 0.5);
+}
+
+.img-3 {
+    transform: scale(0.3) rotate(-20deg);
+}
+
+.image.show {
+    opacity: 1;
+    transform: none;
+}
 
 
 /*OLD CODE
