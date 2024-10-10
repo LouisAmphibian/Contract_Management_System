@@ -25,21 +25,21 @@ toggle_btn.forEach((btn) => {
 });
 
 //fuction to slide to th next images carousel
-function moveSlider() {
-    let index = this.dataset.value;
+function moveSlider(event) {
+    let index = event.target.dataset.value;  
 
-    let currentImage = document.querySelector('.img-${index}');
+    let currentImage = document.querySelector(`.img-${index}`); //`` when there is $ in JavaScript
 
     images.forEach((img) => img.classList.remove("show"));
     currentImage.classList.add("show");
 
     const textSlider = document.querySelector(".text-group");
 
-    textSlider.style.transform = 'translateY(${-(index -1) * 2.2}rem)';
+    textSlider.style.transform = `translateY(${-(index -1) * 2.2}rem)`;
 
     bullets.forEach((bull) => bull.classList.remove("active"));
 
-    this.classList.add("active");
+    event.target.classList.add("active");
 }
 
 bullets.forEach((bullet) => {
