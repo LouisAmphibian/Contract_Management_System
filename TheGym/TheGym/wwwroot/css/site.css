@@ -307,7 +307,7 @@ label {
     width: 55%;
     left: 45%; /* Positioned 45% from the left, occupying the right side */
     top: 0;
-    background-color: #ffe0d2;
+    background-color: #e0fbfc;
     border-radius: 2rem;
     display: grid;
     grid-template-rows: auto 1fr;
@@ -333,10 +333,13 @@ label {
 
 .img-1 {
     transform: translate(0, -50px);
+    height: 450px;
+
 }
 
 .img-2 {
     transform: scale(0.4, 0.5);
+    padding-top: 50px;
 }
 
 .img-3 {
@@ -371,9 +374,13 @@ label {
 }
 
 .text-group h2 {
- line-height: 2.2rem;
+ line-height: 1.8rem;
  font-weight: 600;
  font-size: 1.6rem;
+
+}
+
+.text-group h2{
 
 }
 
