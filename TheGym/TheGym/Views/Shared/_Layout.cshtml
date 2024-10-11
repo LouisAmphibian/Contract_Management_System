@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="~/TheGym.styles.css" asp-append-version="true" />
     
 </head>
+<<<<<<< HEAD
 <body class= "bg ">
 <<<<<<< HEAD
     <header>
@@ -55,24 +56,33 @@
         </nav>
     </header>
 =======
+=======
+<body>
+>>>>>>> cms_branch
    
 >>>>>>> ddff4abe295fb3cea6775f7d41e3dfc4f865c6ba
 
     <!--BODY-->
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div>
+        <main role="main">
             @RenderBody()
         </main>
     </div>
     
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <!--
+    <footer>
+        <div>
             &copy; 2024 - TheGym - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+    -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<<<<<<< HEAD
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+=======
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
+    <!-- <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> -->
+>>>>>>> cms_branch
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

@@ -1,15 +1,157 @@
 ﻿@{
-    ViewData["Title"] = "The GYM";
+    ViewData["Title"] = "Contractly";
 }
+ 
+<main class="main">
+
+    <div class="box">
+
+        <div class="inner-box"> <!--to add padding in the parent box-->
+
+            <!--My form wrap-->
+            <div class="forms-wrap">
+
+                <!--Sign in form-->
+                <form action="index.html" autocomplete="off" class="sign-in-form">
+
+                    <div class="logo">
+                        <img src="./images/C_Logo.png" alt="contractly" />
+                        <h4>Contractly</h4>
+                    </div>
+
+                    <div class="heading">
+                        <h2>Welcome Back</h2>
+                        <h6>Not registred yet?</h6>
+                        <a href="#" class="toggle">Sign up</a>
+                    </div>
+
+                    <div class="actual-form">
+                        <div class="input-wrap">
+                            <input id="name"
+                                   type="text"
+                                   minlength="4"
+                                   class="input-field"
+                                   autocomplete="off"
+                                   required />
+                            <label for="name">Name</label>
+                        </div>
+
+                        <div class="input-wrap">
+                            <input id="password"
+                                   type="password"
+                                   minlength="4"
+                                   class="input-field"
+                                   autocomplete="off"
+                                   required />
+                            <label for="password">Password</label>
+                        </div>
+
+                        <input type="submit" value="Sign In" class="sign-btn" />
+
+                        <p class="text">
+                            Forgotten your password or you login datails?
+                            <a href="#">Get help</a> signing in
+                        </p>
+                    </div>
+                </form>
+
+                <!--Sign up-->
+                <form action="Index.cshtml" autocomplete="off" class="sign-up-form">
+                    <div class="logo">
+                        <img src="./images/C_Logo.png" alt="contractly" />
+                        <h4>Contractly</h4>
+                    </div>
+
+                    <div class="heading">
+                        <h2>Get Started</h2>
+                        <h6>Already have an account?</h6>
+                        <a href="#" class="toggle">Sign in</a>
+                    </div>
+
+                    <div class="actual-form">
+                        <div class="input-wrap">
+                            <input id="name"
+                                   type="text"
+                                   minlength="4"
+                                   class="input-field"
+                                   autocomplete="off"
+                                   required />
+                            <label for="name">Name</label>
+                        </div>
+
+                        <div class="input-wrap">
+                            <input id="email"
+                                   type="email"
+                                   class="input-field"
+                                   autocomplete="off"
+                                   required />
+                            <label for="email">Email</label>
+                        </div>
+
+                        <div class="input-wrap">
+                            <input id="password"
+                                   type="password"
+                                   minlength="4"
+                                   class="input-field"
+                                   autocomplete="off"
+                                   required />
+                            <label for="password">Password</label>
+                        </div>
+
+                        <input type="submit" value="Sign Up" class="sign-btn" />
+
+                        <p class="text">
+                            By signing up, I agree to the
+                            <a href="#">Terms of Services</a> and
+                            <a href="#">Privacy Policy</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+            <!--End of My form wrap-->
+
+            <!--The side carousel-->
+            <div class="carousel">
+                <div class="images-wrapper">
+                    <img src="./images/image6.png" class="image img-1 show" alt="" />
+                    <img src="./images/image4.png" class="image img-2" alt="" />
+                    <img src="./images/image3.png" class="image img-3" alt="" />
+                </div>
+
+                <div class="text-slider">
+                    <div class="text-wrap">
+                        <div class="text-group">
+                            <h2>Create your claim</h2>
+                            <h2>Track Your Claim</h2>
+                            <h2>For the people</h2>
+                        </div>
+                    </div>
+
+                    <div class="bullets">
+                        <span class="active" data-value="1"></span>
+                        <span data-value="2"></span>
+                        <span data-value="3"></span>
+                    </div>
+                </div>
+            </div>
+            <!--End of side carousel-->
+
+        </div>
+    </div>
+</main>
+
+
+
+<!--
  <header>
-        <!--NavBar-->
+        //NavBar
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark  bg-transparent">
             <div class="container-fluid">
 
-                <!--Logo-->
+                //Logo
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">The Claim System</a>
 
-                <!--Toggle btn-->
+                //Toggle btn
                 <button class="navbar-toggler shadow-none border-0" 
                 type="button" 
                 data-bs-toggle="offcanvas"
@@ -20,7 +162,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <!--Side-->
+                //Side
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
@@ -29,7 +171,7 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <!-- <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" href="#section1" >Home</a>-->
+                            // <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index" href="#section1" >Home</a>
                             <a class="nav-link text-dark" href="#section1" >Home</a>
                         </li>
 
@@ -78,7 +220,10 @@
         </nav>
         
     </header>
-<!--Welcome Section-->
+    -->
+
+<!--
+//Welcome Section
 <div class = "welcome" id="section1">
     <div class="landing-text">
         <h2>THE GYM</h2>
@@ -99,7 +244,7 @@
 <h2>EVENTS</h2>
 </div>
 
-<!--Claim Section-->
+//Claim Section
 <div class = "claims" id="section5">
 
     <div class="contentWrapper">
@@ -117,7 +262,8 @@
 </div>
 
 
-<!--About Section-->
+//About Section
 <div class = "about" id="section6">
 <h2>ABOUT</h2>
 </div>
+-->
