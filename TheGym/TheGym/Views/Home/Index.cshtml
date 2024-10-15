@@ -1,4 +1,6 @@
-﻿@{
+﻿@model SignInSignUp
+
+@{
     ViewData["Title"] = "SignUp/SignIn";
 }
  
@@ -12,7 +14,7 @@
             <div class="forms-wrap">
 
                 <!--Sign in form-->
-                <form action="index.html" autocomplete="off" class="sign-in-form">
+                <form asp-action="SignIn" method="post" autocomplete="off" class="sign-in-form">
 
                     <div class="logo">
                         <img src="./images/C_Logo.png" alt="contractly" />
@@ -28,8 +30,7 @@
                     <div class="actual-form">
                         <div class="input-wrap">
                             <input id="name"
-                                   type="text"
-                                   minlength="4"
+                                   asp-for = "SignInModel.Name"
                                    class="input-field"
                                    autocomplete="off"
                                    required />
@@ -38,8 +39,7 @@
 
                         <div class="input-wrap">
                             <input id="password"
-                                   type="password"
-                                   minlength="4"
+                                   asp-for="SignInModel.Password"
                                    class="input-field"
                                    autocomplete="off"
                                    required />
@@ -56,7 +56,7 @@
                 </form>
 
                 <!--Sign up-->
-                <form action="Index.cshtml" autocomplete="off" class="sign-up-form">
+                <form asp-action="SignUp" autocomplete="off" class="sign-up-form">
                     <div class="logo">
                         <img src="./images/C_Logo.png" alt="contractly" />
                         <h4>Contractly</h4>
@@ -71,8 +71,7 @@
                     <div class="actual-form">
                         <div class="input-wrap">
                             <input id="name"
-                                   type="text"
-                                   minlength="4"
+                                   asp-for ="SignUpModel.Name"
                                    class="input-field"
                                    autocomplete="off"
                                    required />
@@ -81,7 +80,7 @@
 
                         <div class="input-wrap">
                             <input id="email"
-                                   type="email"
+                                   asp-for = "SignUpModel.Email"
                                    class="input-field"
                                    autocomplete="off"
                                    required />
@@ -90,8 +89,7 @@
 
                         <div class="input-wrap">
                             <input id="password"
-                                   type="password"
-                                   minlength="4"
+                                   asp-for = "SignUpModel.Password"
                                    class="input-field"
                                    autocomplete="off"
                                    required />
