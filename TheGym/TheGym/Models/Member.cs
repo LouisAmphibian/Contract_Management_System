@@ -1,3 +1,4 @@
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 using System.ComponentModel.DataAnnotations;
 
 namespace TheGym.Models
@@ -13,6 +14,12 @@ namespace TheGym.Models
         [MaxLength(15)] //Length for thr name field
         public string? ContactDetails { get; set; } // Member Contact Detail
         public List<Contract> Contracts { get; set; }  // Relationship with Contracts
+
+        [Required]
+        public Email? Email { get; set; }
+
+        [Required]
+        public string? Password { get; set; }
     }
 
 }
