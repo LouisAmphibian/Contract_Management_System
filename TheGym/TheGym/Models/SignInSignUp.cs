@@ -5,8 +5,8 @@ namespace TheGym.Models
 {
     public class SignInSignUp
     {
-        public SignInModel SignInModel { get; set; } = new SignIn();
-        public SignUpModel SignUpModel { get; set; } = new SignUp();
+        public SignInModel SignInModel { get; set; } = new SignInModel(); //instead of constructor
+        public SignUpModel SignUpModel { get; set; } = new SignUpModel();
 
     }
 
