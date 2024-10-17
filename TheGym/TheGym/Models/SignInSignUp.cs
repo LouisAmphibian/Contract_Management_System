@@ -14,10 +14,11 @@ namespace TheGym.Models
     public class SignInModel
     {
         //properties
-        [Required]
+        [Required (ErrorMessage = "Name or Email is required")]
+        [MaxLength(100)]
         public string? Name { get; set; } //Will accept username and email
 
-        [Required]
+        [Required (ErrorMessage = "Password is required")]
         public string? Password { get; set; }
     }
 
@@ -25,13 +26,13 @@ namespace TheGym.Models
     public class SignUpModel
     {
         //properties
-        [Required]
+        [Required (ErrorMessage = "Name is required")]
         public string? Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Email is required")]
         public Email? Email { get; set; }
 
-        [Required]
+        [Required (ErrorMessage = "Password is required")]
         public string? Password { get; set; }
     }
 }
