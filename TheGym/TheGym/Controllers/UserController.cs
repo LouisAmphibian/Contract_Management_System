@@ -1,10 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TheGym.Models;
+using TheGym.Services;
+
+
 
 namespace TheGym.Controllers
 {
     public class UserController : Controller
     {
+        private readonly ApplicationDbContext context;
+
+        //list of members
+        public List<Member> Members { get; set; } = new List<Member>();
+
+        public UserController(ApplicationDbContext context)
+        {
+            this.context = context;
+
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -18,17 +32,25 @@ namespace TheGym.Controllers
             //If the model state is not valid
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("Index", "UserController1");
+                return RedirectToAction("Index", "UserController");
             }
             else
             {
-                Member member = new Member();
+                //Creating a new member 
+                Member newMember = new Member()
                 {
-                    //Name = signUp.
-                }
+                    Name = signUp.SignUpModel.Name,
+                    Email = signUp.SignUpModel.Email,
+                    Password = signUp.SignUpModel.Password
+                };
+
+                context.Members.Add(newMember);
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Home");
 
             }
-            return View();
+
         }
 
 

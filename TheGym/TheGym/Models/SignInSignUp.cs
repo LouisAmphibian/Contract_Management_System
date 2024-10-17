@@ -1,13 +1,32 @@
-﻿using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 using System.ComponentModel.DataAnnotations;
 
 namespace TheGym.Models
 {
     public class SignInSignUp
     {
+        //creating a property
+        [BindProperty]
         public SignInModel SignInModel { get; set; } = new SignInModel(); //instead of constructor
+
+        [BindProperty]
         public SignUpModel SignUpModel { get; set; } = new SignUpModel();
 
+    }
+
+    //Sign-Up Class
+    public class SignUpModel
+    {
+        //properties
+        [Required(ErrorMessage = "Name is required")]
+        public string? Name { get; set; }
+
+        [Required(ErrorMessage = "Email is required")]
+        public Email? Email { get; set; }
+
+        [Required(ErrorMessage = "Password is required")]
+        public string? Password { get; set; }
     }
 
     //Sign-In Class
@@ -22,17 +41,5 @@ namespace TheGym.Models
         public string? Password { get; set; }
     }
 
-    //Sign-Up Class
-    public class SignUpModel
-    {
-        //properties
-        [Required (ErrorMessage = "Name is required")]
-        public string? Name { get; set; }
 
-        [Required(ErrorMessage = "Email is required")]
-        public Email? Email { get; set; }
-
-        [Required (ErrorMessage = "Password is required")]
-        public string? Password { get; set; }
-    }
 }
