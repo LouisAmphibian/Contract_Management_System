@@ -24,7 +24,7 @@ namespace TheGym.Controllers
             {
                 Member member = new Member();
                 {
-                    Name = signUp.
+                    //Name = signUp.
                 }
 
             }
