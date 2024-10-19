@@ -34,7 +34,7 @@
                                    class="input-field"
                                    autocomplete="off"
                                    required />
-                            <label for="name">Name</label>
+                            <label asp-for="SignInModel.UserName">Name</label>
                         </div>
 
                         <div class="input-wrap">
@@ -56,7 +56,7 @@
                 </form>
 
                 <!--Sign up-->
-                <form method="post" asp-controller="User" asp-for="SignUp" entype="multipart/form-data" autocomplete="off" class="sign-up-form">
+                <form method="post" asp-controller="User" asp-action="SignUp" enctype="multipart/form-data" autocomplete="off" class="sign-up-form">
                     <div class="logo">
                         <img src="./images/C_Logo.png" alt="contractly" />
                         <h4>Contractly</h4>
@@ -71,11 +71,12 @@
                     <div class="actual-form">
                         <div class="input-wrap">
                             <input id="name"
-                                   asp-for ="SignUpModel.Name"
+                                   asp-for ="SignUpModel.UserName"
                                    class="input-field"
                                    autocomplete="off"
                                    required />
-                            <label for="name">Name</label>
+                            <label  asp-for ="SignUpModel.UserName" >Name</label>
+                            <span asp-validation-for="SignUpModel.UserName" class="text-danger"></span>
                         </div>
 
                         <div class="input-wrap">
@@ -84,7 +85,8 @@
                                    class="input-field"
                                    autocomplete="off"
                                    required />
-                            <label for="email">Email</label>
+                            <label asp-for="SignUpModel.Email" for="email">Email</label>
+                            <span asp-validation-for="SignUpModel.Email" class="text-danger"></span>
                         </div>
 
                         <div class="input-wrap">
@@ -93,7 +95,8 @@
                                    class="input-field"
                                    autocomplete="off"
                                    required />
-                            <label for="password">Password</label>
+                            <label asp-for="SignUpModel.Password"  for="password">Password</label>
+                            <span asp-validation-for="SignUpModel.Password" class="text-danger"></span>
                         </div>
 
                         <input type="submit" value="Sign Up" class="sign-btn" />

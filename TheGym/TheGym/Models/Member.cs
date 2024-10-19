@@ -6,8 +6,7 @@ namespace TheGym.Models
     public class Member
     {
         //the properties that will be stored in the database
-        public int MemberID { get; set; }  // Primary Key
-
+        
         [Required]
         [MaxLength(100)] //Length for thr name field
         public string? Name { get; set; }    // Member Name
