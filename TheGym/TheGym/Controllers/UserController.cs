@@ -49,16 +49,15 @@ namespace TheGym.Controllers
         [ActionName ("SignUp")]
        // [AcceptVerbs(HttpVerbs.Post]
         [ValidateAntiForgeryToken]
-        public IActionResult SignUp(SignInSignUp signUp)
+        public IActionResult SignUp(SignUp signUpModel)
         {
-            // Clear any validation errors for SignInModel since it's not used in the sign-up process
-            ModelState.ClearValidationState(nameof(SignInSignUp.SignInModel));
+            
 
 
 
             // information about the model being validated.
             //If the model state is not valid
-            if (!TryValidateModel(signUp.SignUpModel, nameof(SignInSignUp.SignUpModel)))
+            if (!ModelState.IsValid)
             {
                 /* 
                 ModelState.AddModelError("", "Please check fields for errors");
@@ -71,7 +70,7 @@ namespace TheGym.Controllers
                 }
 
                 // Return view with validation errors
-                return RedirectToAction("Index", "Home", signUp);
+                return RedirectToAction("Index", "Home", signUpModel);
             }
 
             /*
@@ -90,9 +89,9 @@ namespace TheGym.Controllers
             */
 
             //Collect user data
-            string user_name = signUp.SignUpModel.UserName;
-            string user_email = signUp.SignUpModel.Email;
-            string user_password = signUp.SignUpModel.Password;
+            string user_name = signUpModel.UserName;
+            string user_email = signUpModel.Email;
+            string user_password = signUpModel.Password;
 
 
             //check if all are collected
@@ -104,11 +103,26 @@ namespace TheGym.Controllers
 
 
         //Get
-        [HttpGet]
-        public IActionResult SignIn() {
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SignIn(SignIn signInModel) {
 
+            if (!ModelState.IsValid)
+            {
 
-            return View();
+                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    Console.WriteLine($"Validation Error: {error.ErrorMessage}");
+                }
+
+                // Return view with validation errors
+                return RedirectToAction("Index", "Home", signInModel);
+            }
+
+            // Proceed with the sign-in logic
+            Console.WriteLine($"Name/Email: {signInModel.UserName}, Password: {signInModel.Password}");
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

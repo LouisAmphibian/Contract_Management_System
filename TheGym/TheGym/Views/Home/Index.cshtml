@@ -1,7 +1,7 @@
-﻿@model SignInSignUp
-
-@{
+﻿@{
     ViewData["Title"] = "SignUp/SignIn";
+    var signInModel = new TheGym.Models.SignIn();
+    var signUpModel = new TheGym.Models.SignUp();
 }
  
 <main class="main">
@@ -14,100 +14,11 @@
             <div class="forms-wrap">
 
                 <!--Sign in form-->
-                <form method="post" asp-controller="User" asp-action="SignIn" autocomplete="off" class="sign-in-form">
-
-                    <div class="logo">
-                        <img src="./images/C_Logo.png" alt="contractly" />
-                        <h4>Contractly</h4>
-                    </div>
-
-                    <div class="heading">
-                        <h2>Welcome Back</h2>
-                        <h6>Not registred yet?</h6>
-                        <a href="#" class="toggle">Sign up</a>
-                    </div>
-
-                    <div class="actual-form">
-                        <div class="input-wrap">
-                            <input id="name"
-                                   asp-for = "SignInModel.Name"
-                                   class="input-field"
-                                   autocomplete="off"
-                                   required />
-                            <label asp-for="SignInModel.UserName">Name</label>
-                        </div>
-
-                        <div class="input-wrap">
-                            <input id="password"
-                                   asp-for="SignInModel.Password"
-                                   class="input-field"
-                                   autocomplete="off"
-                                   required />
-                            <label for="password">Password</label>
-                        </div>
-
-                        <input type="submit" value="Sign In" class="sign-btn" />
-
-                        <p class="text">
-                            Forgotten your password or you login datails?
-                            <a href="#">Get help</a> signing in
-                        </p>
-                    </div>
-                </form>
+                @await Html.PartialAsync("_SignInPartial", signInModel)
 
                 <!--Sign up-->
-                <form method="post" asp-controller="User" asp-action="SignUp" enctype="multipart/form-data" autocomplete="off" class="sign-up-form">
-                    <div class="logo">
-                        <img src="./images/C_Logo.png" alt="contractly" />
-                        <h4>Contractly</h4>
-                    </div>
+                @await Html.PartialAsync("_SignUpPartial", signUpModel)
 
-                    <div class="heading">
-                        <h2>Get Started</h2>
-                        <h6>Already have an account?</h6>
-                        <a href="#" class="toggle">Sign in</a>
-                    </div>
-
-                    <div class="actual-form">
-                        <div class="input-wrap">
-                            <input id="name"
-                                   asp-for ="SignUpModel.UserName"
-                                   class="input-field"
-                                   autocomplete="off"
-                                   required />
-                            <label  asp-for ="SignUpModel.UserName" >Name</label>
-                            <span asp-validation-for="SignUpModel.UserName" class="text-danger"></span>
-                        </div>
-
-                        <div class="input-wrap">
-                            <input id="email"
-                                   asp-for = "SignUpModel.Email"
-                                   class="input-field"
-                                   autocomplete="off"
-                                   required />
-                            <label asp-for="SignUpModel.Email" for="email">Email</label>
-                            <span asp-validation-for="SignUpModel.Email" class="text-danger"></span>
-                        </div>
-
-                        <div class="input-wrap">
-                            <input id="password"
-                                   asp-for = "SignUpModel.Password"
-                                   class="input-field"
-                                   autocomplete="off"
-                                   required />
-                            <label asp-for="SignUpModel.Password"  for="password">Password</label>
-                            <span asp-validation-for="SignUpModel.Password" class="text-danger"></span>
-                        </div>
-
-                        <input type="submit" value="Sign Up" class="sign-btn" />
-
-                        <p class="text">
-                            By signing up, I agree to the
-                            <a href="#">Terms of Services</a> and
-                            <a href="#">Privacy Policy</a>
-                        </p>
-                    </div>
-                </form>
             </div>
             <!--End of My form wrap-->
 

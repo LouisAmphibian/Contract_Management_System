@@ -1,0 +1,44 @@
+﻿@model TheGym.Models.SignIn
+
+
+<!--Sign in form-->
+<form method="post" asp-controller="User" asp-action="SignIn" autocomplete="off" class="sign-in-form">
+
+    <div class="logo">
+        <img src="./images/C_Logo.png" alt="contractly" />
+        <h4>Contractly</h4>
+    </div>
+
+    <div class="heading">
+        <h2>Welcome Back</h2>
+        <h6>Not registred yet?</h6>
+        <a href="#" class="toggle">Sign up</a>
+    </div>
+
+    <div class="actual-form">
+        <div class="input-wrap">
+            <input id="name"
+                   asp-for="UserName"
+                   class="input-field"
+                   autocomplete="off"
+                   required />
+            <label for="name">Name</label>
+        </div>
+
+        <div class="input-wrap">
+            <input id="password"
+                   asp-for="Password"
+                   class="input-field"
+                   autocomplete="off"
+                   required />
+            <label for="password">Password</label>
+        </div>
+
+        <input type="submit" value="Sign In" class="sign-btn" />
+
+        <p class="text">
+            Forgotten your password or you login datails?
+            <a href="#">Get help</a> signing in
+        </p>
+    </div>
+</form>
