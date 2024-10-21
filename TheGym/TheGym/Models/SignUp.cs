@@ -45,13 +45,13 @@ namespace TheGym.Models
 
                     //query
                     //Insert valuest to the database
-                    string query = "INSERT INTO user VALUES('" + username + "','" + email + "','" + pasword + "')";
+                    string query = "INSERT INTO users VALUES('" + username + "','" + email + "','" + pasword + "')";
 
                     //execute commandd to inssert user data into the database
-                    using (SqlCommand add_new_user = new SqlCommand(query, sqlconnects))
+                    using (SqlCommand command = new SqlCommand(query, sqlconnects))
                     {
                         //then execute the command
-                        add_new_user.ExecuteNonQuery();
+                        command.ExecuteNonQuery();
 
                         message = "done";
                     }

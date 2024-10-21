@@ -93,16 +93,37 @@ namespace TheGym.Controllers
             string user_email = signUpModel.Email;
             string user_password = signUpModel.Password;
 
-
+            /*
             //check if all are collected
             Console.WriteLine("Name: " + user_name + "\nEmail: " + user_email + "\nPassword: " + user_password);
+            */
 
-            // If the model state is invalid, return the same view and show validation errors
-            return RedirectToAction("Index", "Home"); // Show the same page with validation errors
+            //pass all values to insert method
+            string message = signUpModel.InsertUser(user_name, user_email, user_password);
+
+            //to check if the user inserted 
+            if (message == "done")
+            {
+                //track error output
+                Console.WriteLine(message);
+
+                //Redirect  to index
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                Console.WriteLine(message);
+
+                // If the model state is invalid, return the same view and show validation errors
+                return RedirectToAction("Index", "Home"); // Show the same page with validation errors
+            }
+
+
+           
         }
 
 
-        //Get
+        //Post
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult SignIn(SignIn signInModel) {

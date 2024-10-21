@@ -27,6 +27,64 @@ namespace TheGym.Models
 
         [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; } = "";
+
+        //MANGING the Database
+        //Connection string class
+        Connection connection = new Connection();
+
+        //Method to check user
+        public string LoginUser(string username, string password)
+        {
+            //temp message
+            string message = "";
+
+            try
+            {
+                //connect and open
+                using (SqlConnection sqlonnects = new SqlConnection(connection.connecting()))
+                {
+                    //open 
+                    sqlonnects.Open();
+
+                    //query 
+                    //Retrieve to the sign up data
+                    string query = "SELECT * FROM users WHERE email = '" + username + "' and password ='" + password + "';";
+
+                    using (SqlCommand command = new SqlCommand(query, sqlonnects))
+                    {
+                        //read the data
+                        using (SqlDataReader find_user = command.ExecuteReader())
+                        {
+
+                            //then check if user is Found
+                            if (find_user.HasRows)
+                            {
+                                //true when found
+                                message = "found";
+
+                            }
+                            else
+                            {
+                                //false when found
+                                message = "not";
+                            }
+                        }
+                    }
+
+                }
+
+
+            }
+            catch (SqlException sqlError)
+            {
+                message = sqlError.Message;
+            }
+            catch (IOException error)
+            {
+                message = error.Message;
+            }
+            return message;
+        }
     }
 
 
