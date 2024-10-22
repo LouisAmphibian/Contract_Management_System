@@ -89,7 +89,7 @@ namespace TheGym.Controllers
             */
 
             //Collect user data
-            string user_name = signUpModel.UserName;
+            string user_name = signUpModel.Username;
             string user_email = signUpModel.Email;
             string user_password = signUpModel.Password;
 
@@ -126,7 +126,13 @@ namespace TheGym.Controllers
         //Post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult SignIn(SignIn signInModel) {
+        public IActionResult SignIn(SignIn signInModel)
+        {
+            // Check if either Username or Email is provided
+            if (string.IsNullOrWhiteSpace(signInModel.Username) && string.IsNullOrWhiteSpace(signInModel.Email))
+            {
+                ModelState.AddModelError("", "Either Username or Email is required.");
+            }
 
             if (!ModelState.IsValid)
             {
@@ -140,8 +146,16 @@ namespace TheGym.Controllers
                 return RedirectToAction("Index", "Home", signInModel);
             }
 
-            // Proceed with the sign-in logic
-            Console.WriteLine($"Name/Email: {signInModel.UserName}, Password: {signInModel.Password}");
+            //then assign 
+            //to accept if it username or email
+            string usernameOrEmail = !string.IsNullOrEmpty(signInModel.Username) ? signInModel.Username : signInModel.Email;
+            
+            //string email = signInModel.Email;
+            string password = signInModel.Password;
+
+
+            Console.WriteLine($"Name/Email: {usernameOrEmail}, Password: {password}");
+           
 
             return RedirectToAction("Index", "Home");
         }
