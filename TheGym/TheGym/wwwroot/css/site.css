@@ -45,12 +45,16 @@ html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden; /* Prevents horizontal scrolling */
-    background-color: #190482; /* Sets background color */
+    
 }
 
 
 body, input {
     font-family: "Poppins", sans-serif;
+}
+
+.bg-color {
+    background-color: #190482; /* Sets background color */
 }
 
 /* Container full width, with no extra margins or padding */
