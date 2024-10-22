@@ -153,11 +153,26 @@ namespace TheGym.Controllers
             //string email = signInModel.Email;
             string password = signInModel.Password;
 
+            //pass the assign variables to the login user model methodd then check if it found
+            string message = signInModel.LoginUser(usernameOrEmail, password);
 
-            Console.WriteLine($"Name/Email: {usernameOrEmail}, Password: {password}");
+            //Console.WriteLine($"Name/Email: {usernameOrEmail}, Password: {password}");
            
+            //temp message
 
-            return RedirectToAction("Index", "Home");
+            if(message == "found")
+            {
+                Console.WriteLine(message);
+                return RedirectToAction("Dashboard", "Home");
+            }
+            else
+            {
+                Console.WriteLine(message);
+                return RedirectToAction("Index", "Home");
+
+            }
         }
+
+       
     }
 }

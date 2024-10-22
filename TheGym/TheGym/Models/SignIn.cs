@@ -43,7 +43,7 @@ namespace TheGym.Models
         Connection connection = new Connection();
 
         //Method to check user
-        public string LoginUser(string email, string password)
+        public string LoginUser(string usernameOrEmail, string password)
         {
             //temp message
             string message = "";
@@ -56,9 +56,19 @@ namespace TheGym.Models
                     //open 
                     sqlonnects.Open();
 
+
+
                     //query 
+                    string query;
                     //Retrieve to the sign up data
-                    string query = "SELECT * FROM users WHERE email = '" + email + "' and password ='" + password + "';";
+                    //Condtion to check if it is a email or username to run each specific query
+                    if (usernameOrEmail.Contains("@")){
+                        query = "SELECT * FROM users WHERE user_email = '" + usernameOrEmail + "' and user_password ='" + password + "';";
+                    }
+                    else
+                    {
+                        query = "SELECT * FROM users WHERE user_name = '" + usernameOrEmail + "' and user_password ='" + password + "';";
+                    }
 
                     /*
                    //check if it recieves data"
@@ -67,6 +77,10 @@ namespace TheGym.Models
 
                     using (SqlCommand command = new SqlCommand(query, sqlonnects))
                     {
+                        //To prevent SQL injection
+                        command.Parameters.AddWithValue("@usernameOrEmail", usernameOrEmail);
+                        command.Parameters.AddWithValue("@password", password);
+
                         //read the data
                         using (SqlDataReader find_user = command.ExecuteReader())
                         {
