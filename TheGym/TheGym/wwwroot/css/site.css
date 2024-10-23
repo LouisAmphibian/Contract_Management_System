@@ -54,6 +54,7 @@ html, body {
 
 body, input {
     font-family: "Poppins", sans-serif;
+
 }
 
 .bg-color {
@@ -416,6 +417,51 @@ label {
  background-color: #151111;
   border-radius: 1rem;
 }
+
+
+/*DASHBOARD*/
+.dashboard {
+    display:flex;
+}
+
+.sidebar{
+    position:sticky;
+    top: 0;
+    left: 0;
+    bottom:0;
+    width: 240px;
+    height: 100vh;
+    padding: 0 1.7rem;
+    color: #fff;
+    overflow: hidden;
+    transition : all 0.5s linear;
+    background: rgba(113, 99, 186, 255);
+}
+
+.sidebar .logo{
+    height: 80px;
+    padding: 16px;
+}
+
+.menu{
+    height: 80px;
+    position: relative;
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    padding :1rem;
+    margin: 8px 0;
+    border-radius: 8px;
+    transition: all 0.5s ease-in-out;
+}
+
+.menu li:hover{
+    background: #e0e0e058;
+
+}
+
 
 /*OLD CODE
 
