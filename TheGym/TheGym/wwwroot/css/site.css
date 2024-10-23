@@ -424,12 +424,12 @@ label {
     display:flex;
 }
 
-.sidebar{
-    position:sticky;
+.sidebar {
+    position: sticky;
     top: 0;
     left: 0;
-    bottom:0;
-    width: 240px;
+    bottom: 0;
+    width: /*240px*/ 110px;
     height: 100vh;
     padding: 0 1.7rem;
     color: #fff;
@@ -437,8 +437,13 @@ label {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition : all 0.5s linear;
+    transition: all 0.5s linear;
     background: rgba(113, 99, 186, 255);
+}
+
+.sidebar:hover{
+    width:240px;
+    transition: 0.5s;
 }
 
 .sidebar .logo{
@@ -507,7 +512,84 @@ label {
   align-items: center;
   gap: 1.5rem;
   justify-content: flex-start; /* Align icon and text at the start */
+
 }
+
+.dash-main-content{
+    position: relative;
+    background: #ebe9e9;
+    width: 100%;
+    padding: 1rem;
+}
+
+/*Profile pic*/
+.header-wrapper img{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%
+}
+
+.header-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 2rem;
+    margin-bottom:1rem;
+}
+
+.header-title{
+    color: rgba(113, 99, 186, 255);
+}
+
+.user-info{
+    display : flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-box{
+    background: rgb(237, 237, 237);
+    border-radius: 15px;
+    color: rgb(113, 99,186, 255);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 12px;
+}
+
+.search-box input{
+  background:transparent;
+  padding: 10px;
+}
+
+.search-box i{
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+}
+
+.search-box i:hover{
+    transform: scale(1.2);
+}
+
+
+/*Card container*/
+.card-container{
+   background: #fff;
+   padding: 2rem;
+   border-radius: 10px;
+}
+
+.card-wrapper{
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1rem;
+}
+
 
 /*OLD CODE
 
