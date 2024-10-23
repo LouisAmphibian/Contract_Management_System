@@ -434,6 +434,9 @@ label {
     padding: 0 1.7rem;
     color: #fff;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     transition : all 0.5s linear;
     background: rgba(113, 99, 186, 255);
 }
@@ -443,8 +446,8 @@ label {
     padding: 16px;
 }
 
-.menu{
-    height: 80px;
+.menu {
+    height: 88%;
     position: relative;
     list-style: none;
     padding: 0;
@@ -457,11 +460,54 @@ label {
     transition: all 0.5s ease-in-out;
 }
 
-.menu li:hover{
+.menu li:hover, .active{
     background: #e0e0e058;
 
 }
 
+.menu a{
+    color:#fff;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+} 
+
+.menu a span{
+    overflow: hidden;
+}
+
+
+.menu a i{
+    font-size: 1.2rem;
+}
+
+.logout {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Ensure it takes the full width of the sidebar */
+    padding: 1rem;
+    margin: 0; /* Ensure no extra margins */
+    border-radius: 8px;
+    transition: all 0.5s ease-in-out;
+}
+
+.logout:hover {
+ background: #e0e0e058;
+
+}
+
+.logout a {
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  justify-content: flex-start; /* Align icon and text at the start */
+}
 
 /*OLD CODE
 
