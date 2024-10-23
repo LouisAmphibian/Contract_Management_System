@@ -235,6 +235,15 @@ label {
    top: -2px;
 }
 
+.input-field:focus {
+    font-size: 0.75rem;
+    top: -2px;
+    background-color: transparent;
+    border-bottom: 0.5px solid #151111;
+    outline: none;
+    opacity: 0.5;
+}
+
 /*Sign button*/
 .sign-btn {
     display: inline-block;
@@ -590,9 +599,103 @@ label {
    gap: 1rem;
 }
 
+.main-title {
+    color: rgba(113, 99, 189, 255);
+    padding-bottom: 10px;
+    font-size: 15px;
+}
+
+.account{
+    background: rgb(229, 223, 223);
+    border-radius: 10px;
+    padding: 1.2rem;
+    width: 290px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.5s ease-in-out;
+}
+
+.account-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.amount{
+    display: flex;
+    flex-direction: column;
+} 
+
+.title{
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.amount-value{
+    font-size: 24px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 600;
+}
+
+.icon{
+    color: #fff;
+    padding: 1rem;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    border-radius: 50%;
+    font-size:1.5rem;
+    background:red;
+
+}
+
+.account-detail{
+    font-size: 18px;
+    color: #777777;
+    letter-spacing: 2px;
+}
+
+/*color css*/
+.light-red{
+background: rgb(251,233,233);
+}
+
+.light-purple {
+    background: rgb(254,266,254);
+}
+
+.light-green {
+    background: rgb(235,254,235);
+}
+
+.light-blue {
+    background: rgb(236,236,254);
+}
+
+.dark-red {
+    background: red;
+}
+
+dark-purple {
+    background: purple;
+}
+
+dark-green {
+    background: green;
+}
+
+dark-blue {
+    background: blue;
+}
+
+
+
 
 /*OLD CODE
-
+)
 //Landing section
 .welcome {
     height: 700px;
