@@ -734,7 +734,7 @@ table{
 }
 
 thead{
-    background: rbga(113,99,186, 255);
+    background: rgba(113,99,186, 255);
     color: #fff;
 }
 
@@ -765,6 +765,7 @@ tfoot{
 
 tfoot td{
     padding: 15px;
+    color: #fff;
 }
 
 .table-container button{
