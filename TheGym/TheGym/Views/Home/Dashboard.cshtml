@@ -126,11 +126,13 @@
 
             </div>
         </div>
+        
 
+        <!--Tebular-->
         <div class="tabular-wrapper" >
             <div class="d-flex justify-content-between align-items-center">
                 <h3 classs="main-title">Your Claims</h3>
-                <a class="btn btn-success mb-2" asp-controller="Claim" asp-action="Create">Create Claim</a>
+                <a class="btn btn-success mb-2" asp-controller="Claim" asp-action="CreateClaim">Create Claim</a>
             </div>
            
             <div class="table-container">
@@ -138,12 +140,12 @@
                     <thead>
                         <tr>
                             <th>Claim ID</th>
-                            <th>Date Filed</th>
                             <th>Type Of Claim</th>
                             <th>Description</th>
                             <th>Hours worked</th>
                             <th>Hourly rate</th>
                             <th>Amount</th>
+                            <th>Date Filed</th>
                             <th>Asigned To</th>
                             <th>Status</th>
                             <th>Resolution Date</th>
@@ -153,12 +155,12 @@
                     <tbody>
                         <tr>
                             <td>004</td>
-                            <td>02/10/2024</td>
                             <td>Breach</td>
                             <td>They hacked my acc</td>
                             <td>6hr</td>
                             <td>$10</td>
                             <td>$100</td>
+                            <td>02/10/2024</td>
                             <td>Nkosana</td>
                             <td>Pending</td>
                             <td>14/11/2024</td>

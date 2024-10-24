@@ -8,6 +8,27 @@ namespace TheGym.Controllers
 {
     public class ClaimController : Controller
     {
+
+        private readonly ILogger<UserController> _logger;
+
+        public ClaimController(ILogger<UserController> logger)
+        {
+            _logger = logger;
+        }
+
+        // This method returns the view for the create form.
+        public IActionResult CreateClaim()
+        {
+            // This renders the view from Views/Home/CreateClaim.cshtml
+            return View();
+        }
+
+
+
+
+
+
+        /*
         private readonly ApplicationDbContext context;
 
         //ctor
@@ -45,7 +66,7 @@ namespace TheGym.Controllers
             return View(claim); // Return form with validation errors
         }
 
-
+        */
 
     }
 
