@@ -450,15 +450,16 @@ label {
 
 /*DASHBOARD*/
 .dashboard {
-    display:flex;
+    display: flex !important;
 }
 
-.sidebar {
+.dashboard .sidebar {
+     overflow: hidden !important; 
     position: sticky;
     top: 0;
     left: 0;
     bottom: 0;
-    width: /*240px*/ 110px;
+    width: /*240px*/ 110px !important;
     height: 100vh;
     padding: 0 1.7rem;
     color: #fff;
@@ -466,13 +467,14 @@ label {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: all 0.5s linear;
+    transition: all 0.5s linear !important;
     background: rgba(113, 99, 186, 255);
 }
 
-.sidebar:hover{
-    width:240px;
-    transition: 0.5s;
+.dashboard .sidebar:hover{
+    width:240px !important;
+    transition: 0.5s !important;
+     flex: 0 0 240px !important;
 }
 
 .sidebar .logo{
@@ -544,11 +546,13 @@ label {
 
 }
 
-.dash-main-content{
+.dash-main-content {
     position: relative;
     background: #ebe9e9;
     width: 100%;
     padding: 1rem;
+    transition: all 0.5s linear !important;
+    flex: 1 !important;
 }
 
 /*Profile pic*/
