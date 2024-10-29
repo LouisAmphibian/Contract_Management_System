@@ -34,7 +34,7 @@ Pull requests are welcome. No major changes, please open an issue first to discu
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
-### [12-May-2023]
+### [24-October-2024]
 
 ### Features Added:
 1. The system allows gym staff to manage member contracts, claims, and payments.
