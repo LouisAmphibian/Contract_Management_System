@@ -8,7 +8,7 @@ The Gym Contract Monthly Claim System (CMCS) is a software application designed 
 Visit this site:  https://louisamphibian.github.io/Contract_Management_System/
 
 ###Local 
-2.- Make sure you have [.NET SDK](https://dotnet.microsoft.com/download) installed.
+- Make sure you have [.NET SDK](https://dotnet.microsoft.com/download) installed.
 - Make sure you have Visual Studio community(https://visualstudio.microsoft.com/vs/community/) installed
 
 ## Installation of application/project
