@@ -771,6 +771,18 @@ tfoot td{
 }
 
 
+/*The Claim form*/
+.claim_form {
+    height: 700px;
+    position: relative;
+    margin: 2% auto;
+    background: lightblue;
+    padding: 35px;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+
 /*OLD CODE
 )
 //Landing section
