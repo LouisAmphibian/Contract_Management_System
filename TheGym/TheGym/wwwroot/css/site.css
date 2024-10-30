@@ -196,7 +196,7 @@ form {
 }
 
 .input-field {
-    position: relative;
+    position: absolute;
     width: 100%;
     padding: 0;
     height: 100%;
@@ -204,13 +204,13 @@ form {
     border: none;
     border-bottom: 1px solid #bbb;
     font-size: 0.95rem;
-    color: black;
+    color: #151111;
     outline: none;
-    transition: border-color 0.4s ease;
+    transition: 0.4s ease;
 }
 
 /* Styling for the input field label */
-label {
+.input-label {
     position: absolute;
     left: 0;
     top: 50%;
@@ -228,7 +228,7 @@ label {
 
 
 /* Active state for input field (e.g., when focused or has content) */
-.input-field:active {
+.input-field .active {
     border-bottom-color: #151111;
     background-color: transparent;
 }
@@ -236,33 +236,25 @@ label {
 /* Moving the label upwards and reducing font size when the input is active */
 /*The + symbol is called the adjacent sibling combinator in CSS. It selects an element
         that immediately follows another element in the DOM, 
-        and both elements must share the same parent.*/
+        and both elements must share the same parent.
 .input-field {
    font-size: 0.75rem;
 }
+*/
 
-.input-field:focus {
-    font-size: 0.9rem;
-    top: -2px;
-    background-color: transparent;
-    border-bottom: 0.5px solid rgba(21, 17, 17, 0.2);
-    outline: none;
-    color: black;
-    padding-bottom: 0px;
+.input-field.active + .input-label {
+  font-size: 0.75rem;
+  top: -2px;
 }
 
-.input-field:focus + label {
-    top: -20px; /* Adjust to move the label up */
-    font-size: 0.75rem; /* Shrink the label */
-    color: #151111;
- }
-
-.input-field:not(:placeholder-shown):not(:focus) + label {
-   top: -20px;
-   font-size: 0.75rem;
-   color: #151111;
+.input-field.filled {
+    background: transparent; /* Fully transparent when filled */
 }
 
+.input-field.filled + .input-label {  
+  font-size: 0.75rem;  
+  top: -2px;  
+}
 
 /*Sign button*/
 .sign-btn {

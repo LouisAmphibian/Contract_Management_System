@@ -10,27 +10,33 @@
         <form method="post" asp-controller="Claim">
             <!-- Your Name -->
             <div class="form-group row mb-3">
-                <label class="col-sm-4 col-form-label">Your Name</label>
+                <label class="col-sm-4 col-form-label" for="name">Your Name</label>
                 <div class="col-sm-8">
-                    <input class="form-control" asp-for="Name" required />
+                    <input id="name"
+                           class="form-control" 
+                           asp-for="Name" required />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
             </div>
 
             <!-- Your Surname -->
             <div class="form-group row mb-3">
-                <label class="col-sm-4 col-form-label">Your Surname</label>
+                <label class="col-sm-4 col-form-label" for="surname">Your Surname</label>
                 <div class="col-sm-8">
-                    <input class="form-control" asp-for="Surname" required />
+                    <input id="surname"
+                           class="form-control"
+                           asp-for="Surname" required />
                     <span asp-validation-for="Surname" class="text-danger"></span>
                 </div>
             </div>
 
             <!-- Type of Claim -->
             <div class="form-group row mb-3">
-                <label class="col-sm-4 col-form-label">Type Of Claim</label>
+                <label class="col-sm-4 col-form-label" for="type">Type Of Claim</label>
                 <div class="col-sm-8">
-                    <select class="form-control" asp-for="TypeOfClaim" required>
+                    <select id="type"
+                        class="form-control" 
+                        asp-for="TypeOfClaim" required>
                         <option selected disabled>Select a claim</option>
                         <option value="employee benefits">Employee Benefits</option>
                         <option value="property claims">Property Claims</option>
@@ -43,27 +49,33 @@
 
             <!-- Description -->
             <div class="form-group row mb-3">
-                <label class="col-sm-4 col-form-label">Description</label>
+                <label class="col-sm-4 col-form-label" for="description">Description</label>
                 <div class="col-sm-8">
-                    <input class="form-control" asp-for="ClaimDescription" required />
+                    <input id="description"
+                           class="form-control" 
+                           asp-for="ClaimDescription" required />
                     <span asp-validation-for="ClaimDescription" class="text-danger"></span>
                 </div>
             </div>
 
             <!-- Hours Worked -->
             <div class="form-group row mb-3">
-                <label class="col-sm-4 col-form-label">Hours Worked</label>
+                <label class="col-sm-4 col-form-label" for="hoursworked">Hours Worked</label>
                 <div class="col-sm-8">
-                    <input class="form-control" asp-for="HoursWorked" required />
+                    <input id="hoursworked"
+                           class="form-control" 
+                           asp-for="HoursWorked" required />
                     <span asp-validation-for="HoursWorked" class="text-danger"></span>
                 </div>
             </div>
 
             <!-- Hourly Rate -->
             <div class="form-group row mb-3">
-                <label class="col-sm-4 col-form-label">Hourly Rate</label>
+                <label class="col-sm-4 col-form-label" for="hoursrate">Hourly Rate</label>
                 <div class="col-sm-8">
-                    <input class="form-control" asp-for="HourlyRate" required />
+                    <input id="hoursrate"
+                           class="form-control" 
+                           asp-for="HourlyRate" required />
                     <span asp-validation-for="HourlyRate" class="text-danger"></span>
                 </div>
             </div>
