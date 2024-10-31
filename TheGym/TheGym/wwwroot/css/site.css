@@ -777,8 +777,8 @@ tfoot td{
 }
 
 .claim_form {
-    width: 700px;
-    height: 700px;
+    width: 80%;
+    height: 80vh;
     position: relative;
     margin: 2% auto;
     background: #e0fbfc;
@@ -786,6 +786,7 @@ tfoot td{
     margin-top: 4px;
     overflow: hidden;
     border-radius: 25px;
+    flex-grow: 1;
 }
 
 .form-box {
@@ -805,6 +806,13 @@ tfoot td{
 .form-box textarea{
     height: 120px
 }
+
+@media only screen and (max-width: 1349px) and (max-height: 679px) {
+    .form-box {
+        height: 120vh;
+    }
+}
+
 
 /*OLD CODE
 )
