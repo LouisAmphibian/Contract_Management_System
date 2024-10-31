@@ -3,8 +3,8 @@
 }
 @model TheGym.Models.Claim
 
-<div class="row">
-    <div class="col-md-8 mx-auto rounded border p-4">
+<div class="row form-box">
+    
         <h2 class="text-center mb-4">New Claim</h2>
 
         <form method="post" asp-controller="Claim"  class="claim_form">
@@ -51,9 +51,9 @@
             <div class="form-group row mb-3">
                 <label class="col-sm-4 col-form-label" for="description">Description</label>
                 <div class="col-sm-8">
-                    <input id="description"
+                    <textarea id="description"
                            class="form-control" 
-                           asp-for="ClaimDescription" required />
+                           asp-for="ClaimDescription" required ></textarea>
                     <span asp-validation-for="ClaimDescription" class="text-danger"></span>
                 </div>
             </div>
@@ -90,5 +90,5 @@
                 </div>
             </div>
         </form>
-    </div>
+   
 </div>

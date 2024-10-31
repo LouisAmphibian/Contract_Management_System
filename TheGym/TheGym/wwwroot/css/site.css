@@ -773,15 +773,30 @@ tfoot td{
 
 /*The Claim form*/
 .claim_form {
+    width: 500px;
     height: 700px;
     position: relative;
     margin: 2% auto;
     background: lightblue;
     padding: 35px;
+    margin-top: 4px;
     overflow: hidden;
     border-radius: 25px;
 }
 
+.form-box {
+    margin-top: 70px;
+}
+
+.form-box h2{
+    margin-top: 2pc;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight:500;
+}
+
+.form-box textarea{
+    height: 120px
+}
 
 /*OLD CODE
 )
