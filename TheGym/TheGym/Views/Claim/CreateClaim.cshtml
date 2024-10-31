@@ -7,33 +7,31 @@
     
         <h2 class="text-center mb-4">New Claim</h2>
 
-        <form method="post" asp-controller="Claim"  class="claim_form">
+        <form method="post" asp-controller="Claim"  class="row g-3 claim_form">
             <!-- Your Name -->
-            <div class="form-group row mb-3">
-                <label class="col-sm-4 col-form-label" for="name">Your Name</label>
-                <div class="col-sm-8">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label" for="name">Your Name</label>
                     <input id="name"
                            class="form-control" 
                            asp-for="Name" required />
                     <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
             </div>
 
             <!-- Your Surname -->
-            <div class="form-group row mb-3">
-                <label class="col-sm-4 col-form-label" for="surname">Your Surname</label>
-                <div class="col-sm-8">
+            <div class="col-md-6">
+                <label class="form-label" for="surname">Your Surname</label>
                     <input id="surname"
                            class="form-control"
                            asp-for="Surname" required />
                     <span asp-validation-for="Surname" class="text-danger"></span>
-                </div>
             </div>
+        </div>
 
+        <div class="row mb-3">
             <!-- Type of Claim -->
-            <div class="form-group row mb-3">
-                <label class="col-sm-4 col-form-label" for="type">Type Of Claim</label>
-                <div class="col-sm-8">
+              <div class="col-6">
+                <label class="form-label" for="type">Type Of Claim</label>
                     <select id="type"
                         class="form-control" 
                         asp-for="TypeOfClaim" required>
@@ -44,41 +42,47 @@
                         <option value="cybersecurity claims">Cybersecurity Claims</option>
                     </select>
                     <span asp-validation-for="TypeOfClaim" class="text-danger"></span>
-                </div>
-            </div>
-
-            <!-- Description -->
-            <div class="form-group row mb-3">
-                <label class="col-sm-4 col-form-label" for="description">Description</label>
-                <div class="col-sm-8">
-                    <textarea id="description"
-                           class="form-control" 
-                           asp-for="ClaimDescription" required ></textarea>
-                    <span asp-validation-for="ClaimDescription" class="text-danger"></span>
-                </div>
             </div>
 
             <!-- Hours Worked -->
-            <div class="form-group row mb-3">
-                <label class="col-sm-4 col-form-label" for="hoursworked">Hours Worked</label>
-                <div class="col-sm-8">
+            <div class="col-6">
+                <label class="form-label" for="hoursworked">Hours Worked</label>
                     <input id="hoursworked"
-                           class="form-control" 
+                           class="form-control"
                            asp-for="HoursWorked" required />
                     <span asp-validation-for="HoursWorked" class="text-danger"></span>
-                </div>
             </div>
+        </div>
 
-            <!-- Hourly Rate -->
-            <div class="form-group row mb-3">
-                <label class="col-sm-4 col-form-label" for="hoursrate">Hourly Rate</label>
-                <div class="col-sm-8">
+         <!-- Hourly Rate -->
+            <div class="col-6">
+                <label class="form-label" for="hoursrate">Hourly Rate ($)</label>
                     <input id="hoursrate"
                            class="form-control" 
                            asp-for="HourlyRate" required />
                     <span asp-validation-for="HourlyRate" class="text-danger"></span>
-                </div>
             </div>
+
+            <!--Upload-->
+            <div class="col-6">
+                <label class="form-label" for="upload">Upload file [optional]</label>
+                    <input id="upload"
+                           asp-for="File"
+                           class="form-control" 
+                           />
+                    <span asp-validation-for="HourlyRate" class="text-danger"></span>
+            </div>
+
+             <!-- Description -->
+            <div class="col-12">
+                <label class="form-label" for="description">Description</label>
+                    <textarea id="description"
+                           class="form-control" 
+                           asp-for="ClaimDescription" required ></textarea>
+                    <span asp-validation-for="ClaimDescription" class="text-danger"></span>
+            </div>
+
+           
 
             <!-- Buttons -->
             <div class="row mt-4">
@@ -92,3 +96,5 @@
         </form>
    
 </div>
+
+

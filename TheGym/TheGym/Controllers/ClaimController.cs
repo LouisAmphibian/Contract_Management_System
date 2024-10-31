@@ -23,6 +23,17 @@ namespace TheGym.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult CreateClaim(Claim model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.DateFiled = DateTime.Now; // Capture the current date
+
+            }
+                // This renders the view from Views/Home/CreateClaim.cshtml
+                return View(model);
+        }
 
 
 

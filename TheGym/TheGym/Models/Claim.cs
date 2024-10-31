@@ -46,6 +46,9 @@ namespace TheGym.Models
         [MaxLength(50, ErrorMessage = "Status cannot exceed 50 characters")]
         public string? Status { get; set; }    // Claim status: Pending, Approved, Denied
 
+        [Display(Name ="Upload File")]
+        public IFormFile? File { get; set; }
+
         [Required(ErrorMessage = "Member ID is required")]
         public int MemberID { get; set; }  // Foreign Key to Member
 
