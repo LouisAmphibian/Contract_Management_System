@@ -445,23 +445,23 @@ form {
     display: flex !important;
 }
 
-.dashboard .sidebar {
-     overflow: hidden !important; 
-    position: sticky;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: /*240px*/ 110px !important;
-    height: 100vh;
-    padding: 0 1.7rem;
-    color: #fff;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.5s linear !important;
-    background: rgba(113, 99, 186, 255);
-}
+    .dashboard .sidebar {
+        overflow: hidden !important;
+        position: sticky;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: /*240px*/ 110px !important;
+        height: 100vh;
+        padding: 0 1.7rem;
+        color: #fff;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 0.5s linear !important;
+        background: #190482;
+    }
 
 .dashboard .sidebar:hover{
     width:240px !important;
@@ -566,8 +566,8 @@ form {
     margin-bottom:1rem;
 }
 
-.header-title{
-    color: rgba(113, 99, 186, 255);
+.header-title {
+    color: #190482;
 }
 
 .user-info{
@@ -680,7 +680,7 @@ form {
 
 /*color css*/
 .light-red{
-background: rgb(251,233,233);
+background: #F8EDE3;
 }
 
 .light-purple {
@@ -696,7 +696,7 @@ background: rgb(251,233,233);
 }
 
 .dark-red {
-    background: red;
+    background: #C5705D;
 }
 
 .dark-purple {
@@ -729,8 +729,8 @@ table{
     border-collapse: collapse;
 }
 
-thead{
-    background: rgba(113,99,186, 255);
+thead {
+    background: #190482;
     color: #fff;
 }
 
@@ -753,8 +753,8 @@ tr:nth-child(even){
     background: #fff;
 }
 
-tfoot{
-    background: rgba(113, 99, 186, 255);
+tfoot {
+    background: #190482;
     font-weight: bold;
     color: #fff;
 }
@@ -772,12 +772,16 @@ tfoot td{
 
 
 /*The Claim form*/
+.form-box{
+
+}
+
 .claim_form {
     width: 700px;
     height: 700px;
     position: relative;
     margin: 2% auto;
-    background: lightblue;
+    background: #e0fbfc;
     padding: 35px;
     margin-top: 4px;
     overflow: hidden;
@@ -785,13 +789,17 @@ tfoot td{
 }
 
 .form-box {
-    margin-top: 70px;
+    background-color: #190482;
+    height: 100vh;
+    display: flex; 
+    flex-direction: column;
 }
 
 .form-box h2{
     margin-top: 2pc;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight:500;
+    color: white;
 }
 
 .form-box textarea{
