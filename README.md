@@ -25,7 +25,9 @@ Visit this site:  https://louisamphibian.github.io/Contract_Management_System/
 1. After building the project, navigate the Debug drop menu
 2. The click on Start Debugging or Start Without Debug
 
-## Screenshot
+## Screen shot
+![Contractly](https://github.com/user-attachments/assets/e6e1df82-17e0-47a9-9e23-82cf22f6163a)
+
 
 
 ## Contributing
