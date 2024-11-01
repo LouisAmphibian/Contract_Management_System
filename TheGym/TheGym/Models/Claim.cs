@@ -65,67 +65,39 @@ namespace TheGym.Models
         Connection connection = new Connection();
 
         //Method to check user
-        public string InsertClaim(string usernameOrEmail, string password)
+        public string InsertClaim(string name, string surname, string typeOfClaim, string description, int hours, decimal hourlyRate, DateTime dateFiled, IFormFile file)
         {
             //temp message
             string message = "";
 
+            //to get user data
+            string user_Id = get_Id();
+            string user_Email = get_email();
+
+            decimal total = (decimal)hours * hourlyRate;
+            
+            string query = "INSERT INTO claims VALUES();";
+
             try
             {
                 //connect and open
-                using (SqlConnection sqlonnects = new SqlConnection(connection.connecting()))
+                using (SqlConnection sqlConnects = new SqlConnection(connection.connecting()))
                 {
                     //open 
-                    sqlonnects.Open();
+                    sqlConnects.Open();
 
-
-
-                    //query 
-                    string query;
-                    //Retrieve to the sign up data
-                    //Condtion to check if it is a email or username to run each specific query
-                    if (usernameOrEmail.Contains("@"))
-                    {
-                        query = "SELECT * FROM users WHERE user_email = '" + usernameOrEmail + "' and user_password ='" + password + "';";
-                    }
-                    else
-                    {
-                        query = "SELECT * FROM users WHERE user_name = '" + usernameOrEmail + "' and user_password ='" + password + "';";
-                    }
-
-                    /*
-                   //check if it recieves data"
-                   Console.WriteLine(emaill + " AND " + password);
-                   */
-
-                    using (SqlCommand command = new SqlCommand(query, sqlonnects))
+                    //PREPARE TO EXECUTE
+                    using (SqlCommand command = new SqlCommand(query, sqlConnects))
                     {
                         //To prevent SQL injection
-                        command.Parameters.AddWithValue("@usernameOrEmail", usernameOrEmail);
-                        command.Parameters.AddWithValue("@password", password);
+                        //command.Parameters.AddWithValue("@usernameOrEmail", usernameOrEmail);
+                        //command.Parameters.AddWithValue("@password", password);
 
-                        //read the data
-                        using (SqlDataReader find_user = command.ExecuteReader())
-                        {
-
-                            //then check if user is Found
-                            if (find_user.HasRows)
-                            {
-                                //true when found
-                                message = "found";
-
-                            }
-                            else
-                            {
-                                //false when found
-                                message = "not";
-                            }
-                        }
+                        command.ExecuteNonQuery();
+                        message = "done";
                     }
 
                 }
-
-
             }
             catch (SqlException sqlError)
             {
@@ -138,6 +110,35 @@ namespace TheGym.Models
             return message;
 
 
+        }
+
+        public string getEmail()
+        {
+            //hold the email
+            string hold_email = "";
+
+            try
+            {
+                using (SqlConnection connects = new SqlConnection(connection.connecting()))
+                {
+                    //open connection
+                    connects.Open();
+
+                    using (SqlCommand prepare = new SqlCommand("SELECT * FROM claims", connects))
+                    {
+
+                    }
+                }
+            }
+            catch (SqlException sqlError)
+            {
+
+            }
+            catch (IOException error)
+            {
+
+            }
+            return hold_email;
         }
 
     }
