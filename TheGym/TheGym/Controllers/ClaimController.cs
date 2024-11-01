@@ -24,15 +24,39 @@ namespace TheGym.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateClaim(Claim model)
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateClaim(Claim claimModel)
         {
-            if (ModelState.IsValid)
-            {
-                model.DateFiled = DateTime.Now; // Capture the current date
+            claimModel.DateFiled = DateTime.Now; // Capture the current date
 
+            //assign
+            string name = claimModel.Name;
+            string surname = claimModel.Surname;
+            string typeOfClaim = claimModel.TypeOfClaim;
+            string claimDescription = claimModel.ClaimDescription;
+            int hoursWorked = claimModel.HoursWorked;
+            decimal hourlyRate = claimModel.HourlyRate;
+
+            claimModel.DateFiled = DateTime.Now; // Capture the current date
+            DateTime dateFiled = claimModel.DateFiled;
+
+            IFormFile file = claimModel.File;
+
+
+            if (!ModelState.IsValid)
+            {
+             foreach (var error in ModelState.Values.SelectMany(v=> v.Errors))
+                {
+                    Console.WriteLine($"Validation Error: {error.ErrorMessage}");
+                }
+
+                // Return view with validation errors
+                return RedirectToAction("CreateClaim", "Claim", claimModel);
             }
-                // This renders the view from Views/Home/CreateClaim.cshtml
-                return View(model);
+           
+
+            // This renders the view from Views/Home/CreateClaim.cshtml
+            return View(claimModel);
         }
 
 
