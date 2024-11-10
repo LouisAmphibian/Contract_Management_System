@@ -34,7 +34,7 @@ namespace TheGym.Models
         [Range(0.01, 1000.00, ErrorMessage = "Hourly rate must be between 0.01 and 1000.00")]
         public decimal HourlyRate { get; set; }
 
-        [Required(ErrorMessage = "Claim amount is required")]
+       // [Required(ErrorMessage = "Claim amount is required")]
         [Range(0.01, double.MaxValue, ErrorMessage = "Claim amount must be greater than 0")]
         public decimal ClaimAmount { get; set; }  // Claim amount
 
@@ -42,22 +42,22 @@ namespace TheGym.Models
         [DataType(DataType.Date, ErrorMessage = "Invalid date format")]
         public DateTime DateFiled { get; set; } // Date of the claim
 
-        [Required(ErrorMessage = "Status is required")]
+        //[Required(ErrorMessage = "Status is required")]
         [MaxLength(50, ErrorMessage = "Status cannot exceed 50 characters")]
         public string? Status { get; set; }    // Claim status: Pending, Approved, Denied
 
         [Display(Name ="Upload File")]
         public IFormFile? File { get; set; }
 
-        [Required(ErrorMessage = "Member ID is required")]
+        //[Required(ErrorMessage = "Member ID is required")]
         public int MemberID { get; set; }  // Foreign Key to Member
 
-        [Required(ErrorMessage = "Contract ID is required")]
+       // [Required(ErrorMessage = "Contract ID is required")]
         public int ContractID { get; set; }  // Foreign Key for Contract
 
         public Contract? Contract { get; set; }  // Relationship with Contract
 
-        public List<Payment> Payments { get; set; }  // Relationship with Payments
+       // public List<Payment> Payments { get; set; }  // Relationship with Payments
 
 
 
