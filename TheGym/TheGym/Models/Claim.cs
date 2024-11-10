@@ -71,8 +71,8 @@ namespace TheGym.Models
             string message = "";
 
             //to get user data
-            string user_Id = get_Id();
-            string user_Email = get_email();
+           // string user_Id = get_Id();
+           // string user_Email = get_email();
 
             decimal total = (decimal)hours * hourlyRate;
             

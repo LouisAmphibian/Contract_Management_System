@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TheGym.Services;
 using TheGym.Models;
+using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 
 
 //Controller used to control our back end
@@ -27,7 +28,16 @@ namespace TheGym.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult CreateClaim(Claim claimModel)
         {
-            claimModel.DateFiled = DateTime.Now; // Capture the current date
+            if (!ModelState.IsValid)
+            {
+                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    Console.WriteLine($"Validation Error: {error.ErrorMessage}");
+                }
+
+                // Return view with validation errors
+                return RedirectToAction("CreateClaim", "Claim", claimModel);
+            }
 
             //assign
             string name = claimModel.Name;
@@ -42,21 +52,47 @@ namespace TheGym.Controllers
 
             IFormFile file = claimModel.File;
 
+            string filename = "no file";
 
-            if (!ModelState.IsValid)
+            //File info
+            if (file == null && file.Length > 0)
             {
-             foreach (var error in ModelState.Values.SelectMany(v=> v.Errors))
+                //get file name
+                filename = Path.GetFileName(file.FileName);
+
+                //define
+                string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/pdf");
+
+                if (!Directory.Exists(folderPath))
                 {
-                    Console.WriteLine($"Validation Error: {error.ErrorMessage}");
+                    Directory.CreateDirectory(folderPath);
                 }
 
-                // Return view with validation errors
-                return RedirectToAction("CreateClaim", "Claim", claimModel);
+                string filePath = Path.Combine(folderPath, filename);
+
+                //save the file to specified path
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+
+                    Console.WriteLine("File" + filename + "ïs succesfully uploaded");
+                }
             }
-           
+
+            //Check if collect
+            Console.WriteLine($"Name: {name} \n Surname: {surname} \n Type of claim: {typeOfClaim} \n" +
+                $"Claim Description: {claimDescription} \n Hour Worked: {hoursWorked} \n" +
+                $"Hours Rate: {hourlyRate} \n File name: {filename}");
+
+            /*
+            if(message == "done")
+            {
+                Console.WriteLine(message);
+            }
+            */
 
             // This renders the view from Views/Home/CreateClaim.cshtml
-            return View(claimModel);
+            return RedirectToAction("Dashboard","Home");
         }
 
 
@@ -103,6 +139,6 @@ namespace TheGym.Controllers
 
         */
 
-    }
+        }
 
-}
+    }

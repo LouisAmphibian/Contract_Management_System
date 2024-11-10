@@ -807,7 +807,7 @@ tfoot td{
     height: 120px
 }
 
-@media only screen and (max-width: 1349px) and (max-height: 679px) {
+@media only screen and (max-width: 1366px) and (max-height: 768px) {
     .form-box {
         height: 120vh;
     }
