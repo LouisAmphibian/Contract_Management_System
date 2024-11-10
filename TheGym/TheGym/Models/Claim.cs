@@ -35,7 +35,7 @@ namespace TheGym.Models
         public decimal HourlyRate { get; set; }
 
        // [Required(ErrorMessage = "Claim amount is required")]
-        [Range(0.01, double.MaxValue, ErrorMessage = "Claim amount must be greater than 0")]
+       // [Range(0.01, double.MaxValue, ErrorMessage = "Claim amount must be greater than 0")]
         public decimal ClaimAmount { get; set; }  // Claim amount
 
         [Required(ErrorMessage = "Claim month is required")]
