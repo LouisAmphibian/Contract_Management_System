@@ -3,6 +3,7 @@ using TheGym.Models; //import model
 using TheGym.Services;
 using System.Diagnostics;
 using System.Data.SqlClient; //import SQL client
+using Microsoft.AspNetCore.Identity;
 
 
 
@@ -12,31 +13,23 @@ namespace TheGym.Controllers
     {
         // private readonly ApplicationDbContext context;
         private readonly ILogger<UserController> _logger;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public UserController(ILogger<UserController> logger)
+
+        public UserController(ILogger<UserController> logger, SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _logger = logger;
+            _signInManager = signInManager;
+            _userManager = userManager;
         }
 
         //list of members
         public List<Member> Members { get; set; } = new List<Member>();
 
-        /*
-        public UserController(ApplicationDbContext context)
-        {
-            this.context = context;
-
-        }
-        */
-
-        /*
-        public IActionResult Index()
-        {
-            return View();
-        }
-        */
 
         // This method returns the view for the sign-up form.
+        [HttpGet]
         public IActionResult SignUp()
         {
             return View();
@@ -122,6 +115,13 @@ namespace TheGym.Controllers
            
         }
 
+
+        // This method get the view for the sign-in form.
+        [HttpGet]
+        public IActionResult SignIn()
+        {
+            return View();
+        }
 
         //Post
         [HttpPost]

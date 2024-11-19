@@ -2,6 +2,7 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
 namespace TheGym.Models
 {
@@ -18,7 +19,7 @@ namespace TheGym.Models
     */
 
     //Sign-In Class
-    public class SignIn
+    public class SignIn :IdentityUser
     {
         //properties
         [Required(ErrorMessage = "Username is required")]
