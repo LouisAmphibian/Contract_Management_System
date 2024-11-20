@@ -2,7 +2,8 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Identity;
+using System.Data;
+//using Microsoft.AspNetCore.Identity;
 
 namespace TheGym.Models
 {
@@ -19,7 +20,7 @@ namespace TheGym.Models
     */
 
     //Sign-In Class
-    public class SignIn :IdentityUser
+    public class SignIn 
     {
         //properties
         [Required(ErrorMessage = "Username is required")]
@@ -52,10 +53,10 @@ namespace TheGym.Models
             try
             {
                 //connect and open
-                using (SqlConnection sqlonnects = new SqlConnection(connection.connecting()))
+                using (SqlConnection sqlconnects = new SqlConnection(connection.connecting()))
                 {
                     //open 
-                    sqlonnects.Open();
+                    sqlconnects.Open();
 
 
 
@@ -64,11 +65,11 @@ namespace TheGym.Models
                     //Retrieve to the sign up data
                     //Condtion to check if it is a email or username to run each specific query
                     if (usernameOrEmail.Contains("@")){
-                        query = "SELECT * FROM users WHERE user_email = '" + usernameOrEmail + "' and user_password ='" + password + "';";
+                        query = "SELECT * FROM users WHERE user_email = '" + usernameOrEmail + "' AND user_password ='" + password + "';";
                     }
                     else
                     {
-                        query = "SELECT * FROM users WHERE user_name = '" + usernameOrEmail + "' and user_password ='" + password + "';";
+                        query = "SELECT * FROM users WHERE user_name = '" + usernameOrEmail + "' AND user_password ='" + password + "';";
                     }
 
                     /*
@@ -76,11 +77,12 @@ namespace TheGym.Models
                    Console.WriteLine(emaill + " AND " + password);
                    */
 
-                    using (SqlCommand command = new SqlCommand(query, sqlonnects))
+                    using (SqlCommand command = new SqlCommand(query, sqlconnects))
                     {
                         //To prevent SQL injection
                         command.Parameters.AddWithValue("@usernameOrEmail", usernameOrEmail);
                         command.Parameters.AddWithValue("@password", password);
+                       // command.Parameters.AddWithValue("@role", role);
 
                         //read the data
                         using (SqlDataReader find_user = command.ExecuteReader())
@@ -89,8 +91,21 @@ namespace TheGym.Models
                             //then check if user is Found
                             if (find_user.HasRows)
                             {
-                                //true when found
-                                message = "found";
+                                find_user.Read();
+
+                                string email = find_user["user_email"].ToString();
+
+                                //check type of user is found
+                                if (email.Contains(".pm@contractly.com") || email.Contains(".pc@contractly.com"))
+                                {
+                                    message = "pc found";
+                                }
+                                else
+                                {
+                                    //true when found
+                                    message = "found";
+                                }
+                                
 
                             }
                             else

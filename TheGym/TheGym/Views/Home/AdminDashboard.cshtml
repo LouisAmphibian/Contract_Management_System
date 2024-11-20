@@ -1,0 +1,185 @@
+﻿@{
+    ViewData["Title"] = "AdminDashboard";
+}
+<div class="dashboard">
+    <div class="sidebar">
+        <div class="logo"></div>
+
+        <ul class="menu">
+            <li class="active">
+                <a href="#">
+                    <i class="bi bi-speedometer2"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="#">
+                    <i class="bi bi-person-circle"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="#">
+                    <i class="bi bi-bar-chart-line-fill"></i>
+                    <span>Statistics</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="bi bi-briefcase-fill"></i>
+                    <span>Career</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="bi bi-question-circle"></i>
+                    <span>FAQ</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="bi bi-stars"></i>
+                    <span>Testimonials</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="bi bi-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+
+            <li class="logout">
+                <a href="#">
+                    <i class="bi bi-box-arrow-left"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+    <!--Main Content-->
+    <div class="dash-main-content">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <span>Admin</span>
+                <h2>Dashboard</h2>
+            </div>
+
+            <!--Profile -->
+            <div class="user-info">
+                <div class="search-box">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" placeholder="Search" />
+                </div>
+                <img src="~/images/img.jpeg" />
+            </div>
+        </div>
+
+        <!-- 'User data'-->
+        <div class="card-container">
+            <h3 class="main-title">Data</h3>
+            <div class="card-wrapper">
+
+                <div class="account light-red">
+                    <div class="account-header">
+                        <div class="amount">
+                            <span class="title">Claimed amount</span>
+                            <span class="amount-value">$400</span>
+                        </div>
+                        <i class="fas fa-dollar icon dark-red"></i>
+                    </div>
+                    <span class="account-detail">***** ***** ***** 3486</span>
+                </div>
+
+                <div class="account light-purple">
+                    <div class="account-header">
+                        <div class="amount">
+                            <span class="title">Claim order</span>
+                            <span class="amount-value">$0</span>
+                        </div>
+                        <i class="fas fa-dollar icon dark-purple"></i>
+                    </div>
+                    <span class="account-detail">***** ***** ***** 6698</span>
+                </div>
+
+                <div class="account light-green">
+                    <div class="account-header">
+                        <div class="amount">
+                            <span class="title">Claim proceed</span>
+                            <span class="amount-value">$400</span>
+                        </div>
+                        <i class="fas fa-dollar icon dark-green"></i>
+                    </div>
+                    <span class="account-detail">***** ***** ***** 7557</span>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!--Tebular-->
+        <div class="tabular-wrapper">
+            <div class="d-flex justify-content-between align-items-center">
+                <h3 classs="main-title">Your Claims</h3>
+                <a class="btn btn-success mb-2" asp-controller="Claim" asp-action="CreateClaim">Create Claim</a>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Claim ID</th>
+                            <th>Type Of Claim</th>
+                            <th>Description</th>
+                            <th>Hours worked</th>
+                            <th>Hourly rate</th>
+                            <th>Amount</th>
+                            <th>Date Filed</th>
+                            <th>Asigned To</th>
+                            <th>Status</th>
+                            <th>Resolution Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>004</td>
+                            <td>Breach</td>
+                            <td>They hacked my acc</td>
+                            <td>6hr</td>
+                            <td>$10</td>
+                            <td>$100</td>
+                            <td>02/10/2024</td>
+                            <td>Nkosana</td>
+                            <td>Pending</td>
+                            <td>14/11/2024</td>
+                            <td>
+                                <div class="d-flex flex-column">
+                                    <a class="btn btn-secondary btn-sm mb-2" asp-controller="Claim" asp-action="Edit" asp-route-id="">Edit</a>
+                                    <a class="btn btn-primary btn-sm" asp-controller="Claim" asp-action="Delete" asp-route-id="">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="11">Total: 400</td>
+                        </tr>
+                    </tfoot>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
