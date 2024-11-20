@@ -26,7 +26,7 @@ namespace TheGym.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateClaim(Claim claimModel)
+        public IActionResult CreateClaim(Claim claimModel, IFormFile file)
         {
             if (!ModelState.IsValid)
             {
@@ -44,18 +44,17 @@ namespace TheGym.Controllers
             string surname = claimModel.Surname;
             string typeOfClaim = claimModel.TypeOfClaim;
             string claimDescription = claimModel.ClaimDescription;
-            int hoursWorked = claimModel.HoursWorked;
-            decimal hourlyRate = claimModel.HourlyRate;
+            string hoursWorked = claimModel.HoursWorked.ToString();
+            string hourlyRate = claimModel.HourlyRate.ToString();
 
             claimModel.DateFiled = DateTime.Now; // Capture the current date
             DateTime dateFiled = claimModel.DateFiled;
-
-            IFormFile file = claimModel.File;
+            string data = dateFiled.ToString();
 
             string filename = "no file";
 
             //File info
-            if (file == null && file.Length > 0)
+            if (file != null && file.Length > 0)
             {
                 //get file name
                 filename = Path.GetFileName(file.FileName);
