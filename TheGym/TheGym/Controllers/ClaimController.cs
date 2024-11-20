@@ -92,7 +92,7 @@ namespace TheGym.Controllers
             */
 
             // This renders the view from Views/Home/CreateClaim.cshtml
-            return RedirectToAction("Dashboard","Home");
+            return RedirectToAction("Dashboard","Dashboard");
         }
 
 
