@@ -181,20 +181,30 @@ namespace TheGym.Controllers
             //pass the assign variables to the login user model methodd then check if it found  
             string message = signInModel.LoginUser(usernameOrEmail, password);
 
-            Console.WriteLine($"Name/Email: {usernameOrEmail}, Password: {password}");  
+            Console.WriteLine($"Name/Email: {usernameOrEmail}, Password: {password}");
 
             //temp message  
 
             if (message == "found")
             {
-              
+
                 Console.WriteLine(message);
-                return RedirectToAction("Dashboard", "Home");
+                return RedirectToAction("Dashboard", "Dashboard");
             }
             else if (message == "pc found")
             {
                 Console.WriteLine(message);
-                return RedirectToAction("AdminDashboard", "Home");
+                return RedirectToAction("PCAdminDashboard", "Dashboard");
+            }
+            else if (message == "pm found")
+            {
+                Console.WriteLine(message);
+                return RedirectToAction("PMAdminDashboard", "Dashboard");
+            }
+            else if (message == "hr found")
+            {
+                Console.WriteLine(message);
+                return RedirectToAction("HRAdminDashboard", "Dashboard");
             }
             else
             {

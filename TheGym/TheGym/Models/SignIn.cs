@@ -96,9 +96,17 @@ namespace TheGym.Models
                                 string email = find_user["user_email"].ToString();
 
                                 //check type of user is found
-                                if (email.Contains(".pm@contractly.com") || email.Contains(".pc@contractly.com"))
+                                if (email.Contains(".pc@contractly.com"))
                                 {
                                     message = "pc found";
+                                }
+                                else if (email.Contains(".pm@contractly.com"))
+                                {
+                                    message = "pm found";
+                                }
+                                else if (email.Contains(".hr@contractly.com"))
+                                {
+                                    message = "hr found";
                                 }
                                 else
                                 {
