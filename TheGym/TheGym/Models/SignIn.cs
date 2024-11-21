@@ -95,6 +95,10 @@ namespace TheGym.Models
 
                                 string email = find_user["user_email"].ToString();
 
+                                //Set
+                                DataManager.Instance.Data = email;
+
+
                                 //check type of user is found
                                 if (email.Contains(".pc@contractly.com"))
                                 {

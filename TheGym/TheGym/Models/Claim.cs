@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.ConstrainedExecution;
 using Microsoft.Data.SqlClient;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 
 namespace TheGym.Models
 {
@@ -35,8 +36,8 @@ namespace TheGym.Models
         [Range(0.01, 1000.00, ErrorMessage = "Hourly rate must be between 0.01 and 1000.00")]
         public decimal HourlyRate { get; set; }
 
-        [Required(ErrorMessage = "Claim amount is required")]
-        [Range(0.01, double.MaxValue, ErrorMessage = "Claim amount must be greater than 0")]
+        //[Required(ErrorMessage = "Claim amount is required")]
+        //[Range(0.01, double.MaxValue, ErrorMessage = "Claim amount must be greater than 0")]
         public decimal ClaimAmount { get; set; }  // Claim amount
 
         [Required(ErrorMessage = "Claim month is required")]
@@ -76,8 +77,12 @@ namespace TheGym.Models
             string user_Email = getEmail(user_Id);
 
             string total = "" + decimal.Parse(hours) * decimal.Parse(hourlyRate);
-            Console.WriteLine(total);
+            //Console.WriteLine(total);
 
+            Console.WriteLine($"User email: {user_Email} \nUser id: {user_Id} \nName: {name} \nSurname: {surname} \nType Of Claim: {typeOfClaim} " +
+                $"\nDescription: {description} \nHours: {hours} \nHourly Rate: {hourlyRate} \nDate: {date} \nFile Name: {filename} \nTotal: {total}");
+
+            /*
             string query = "INSERT INTO claims VALUES();";
 
             try
@@ -108,7 +113,7 @@ namespace TheGym.Models
             catch (IOException error)
             {
                 message = error.Message;
-            }
+            }*/
             return message;
 
 
@@ -126,20 +131,19 @@ namespace TheGym.Models
                     //open connection
                     sqlconnects.Open();
 
-                    using (SqlCommand prepare = new SqlCommand("SELECT user_email FROM users WHERE user_id = @user_id", sqlconnects))
+                    using (SqlCommand sqlcommand = new SqlCommand($"SELECT user_email FROM users WHERE user_Id = {user_Id} ;", sqlconnects))
                     {
-                        prepare.Parameters.AddWithValue("@ussr_id", user_Id);
+                        //prepare.Parameters.AddWithValue("@user_Id", user_Id);
 
-                        using (SqlDataReader getEmail = prepare.ExecuteReader())
+                        using (SqlDataReader getEmail = sqlcommand.ExecuteReader())
                         {
                             if (getEmail.Read())
                             {
                                 //check all but one
-                                while (getEmail.Read())
-                                {
+                                
                                     // then get email
                                     hold_email = getEmail["user_email"].ToString();
-                                }
+                                
                             }
 
                             getEmail.Close();
@@ -164,7 +168,51 @@ namespace TheGym.Models
 
         public string getId()
         {
-            string hold_id = ""; 
+            //hold the id
+            string hold_id = "";
+
+            try
+            {
+                using (SqlConnection sqlconnection = new SqlConnection(connection.connecting()))
+                {
+                    //open connection
+                    sqlconnection.Open();
+
+                    //Retrieve
+                    string email = DataManager.Instance.Data;
+
+                    //finding the id with user email
+                    using (SqlCommand sqlcommand = new SqlCommand("SELECT user_id FROM users WHERE user_email = '" + email + "';", sqlconnection))
+                    {
+                       // prepare.Parameters.AddWithValue("@email", email);
+
+                        // Execute reader
+                        using (SqlDataReader getId = sqlcommand.ExecuteReader())
+                        {
+                           
+                            if (getId.Read())
+                            {
+                                    //then get id
+                                    hold_id = getId["user_id"].ToString();
+                            }
+
+                            getId.Close();
+                        }
+                    }
+
+                    sqlconnection.Close();
+                }
+            }
+            catch (SqlException error)
+            {
+                Console.WriteLine("SQL Error: " + error.Message);
+                hold_id = error.Message; 
+            }
+            catch (IOException error)
+            {
+                Console.WriteLine(error.Message);
+                hold_id = error.Message; 
+            }
 
             return hold_id;
         }
