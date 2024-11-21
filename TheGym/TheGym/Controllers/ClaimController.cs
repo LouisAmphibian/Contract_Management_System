@@ -48,8 +48,8 @@ namespace TheGym.Controllers
             string hourlyRate = claimModel.HourlyRate.ToString();
 
             claimModel.DateFiled = DateTime.Now; // Capture the current date
-            DateTime dateFiled = claimModel.DateFiled;
-            string data = dateFiled.ToString();
+            DateTime date = claimModel.DateFiled;
+            string dateFiled = date.ToString("yyyy/MM/dd");
 
             string filename = "no file";
 
@@ -78,10 +78,15 @@ namespace TheGym.Controllers
                 }
             }
 
+            /*
             //Check if collect
             Console.WriteLine($"Name: {name} \n Surname: {surname} \n Type of claim: {typeOfClaim} \n" +
                 $"Claim Description: {claimDescription} \n Hour Worked: {hoursWorked} \n" +
-                $"Hours Rate: {hourlyRate} \n File name: {filename}");
+                $"Hours Rate: {hourlyRate} \n File name: {filename} \nDate: {date}" );
+            */
+
+            //Insert the claaim in the database
+            string message = claimModel.InsertClaim(name, surname, typeOfClaim, claimDescription, hoursWorked, hourlyRate, dateFiled, filename); 
 
             /*
             if(message == "done")

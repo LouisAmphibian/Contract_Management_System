@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.ConstrainedExecution;
 using Microsoft.Data.SqlClient;
 
 namespace TheGym.Models
@@ -17,14 +18,14 @@ namespace TheGym.Models
 
         [Required(ErrorMessage = "Type Of Claim is required")]
         [DataType(DataType.Text)]
-        public string? TypeOfClaim { get; set; }
+        public string TypeOfClaim { get; set; } = "";
 
         /// <summary>
         //[Required(ErrorMessage = "Type Of Claim is required")]
         /// </summary>
         [DataType(DataType.Text)]
         [MaxLength(500, ErrorMessage = "Claim description cannot exceed 500 characters")]
-        public string? ClaimDescription { get; set; }
+        public string ClaimDescription { get; set; } = "";
 
         [Required(ErrorMessage = "Hours worked are required")]
         [Range(1, 24, ErrorMessage = "Hours worked must be between 1 and 24")]
@@ -34,8 +35,8 @@ namespace TheGym.Models
         [Range(0.01, 1000.00, ErrorMessage = "Hourly rate must be between 0.01 and 1000.00")]
         public decimal HourlyRate { get; set; }
 
-       // [Required(ErrorMessage = "Claim amount is required")]
-       // [Range(0.01, double.MaxValue, ErrorMessage = "Claim amount must be greater than 0")]
+        [Required(ErrorMessage = "Claim amount is required")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Claim amount must be greater than 0")]
         public decimal ClaimAmount { get; set; }  // Claim amount
 
         [Required(ErrorMessage = "Claim month is required")]
@@ -46,18 +47,18 @@ namespace TheGym.Models
         [MaxLength(50, ErrorMessage = "Status cannot exceed 50 characters")]
         public string? Status { get; set; }    // Claim status: Pending, Approved, Denied
 
-        [Display(Name ="Upload File")]
+        [Display(Name = "Upload File")]
         public IFormFile? File { get; set; }
 
         //[Required(ErrorMessage = "Member ID is required")]
         public int MemberID { get; set; }  // Foreign Key to Member
 
-       // [Required(ErrorMessage = "Contract ID is required")]
+        // [Required(ErrorMessage = "Contract ID is required")]
         public int ContractID { get; set; }  // Foreign Key for Contract
 
         public Contract? Contract { get; set; }  // Relationship with Contract
 
-       // public List<Payment> Payments { get; set; }  // Relationship with Payments
+        // public List<Payment> Payments { get; set; }  // Relationship with Payments
 
 
 
@@ -65,17 +66,18 @@ namespace TheGym.Models
         Connection connection = new Connection();
 
         //Method to check user
-        public string InsertClaim(string name, string surname, string typeOfClaim, string description, int hours, decimal hourlyRate, DateTime dateFiled, IFormFile file)
+        public string InsertClaim(string name, string surname, string typeOfClaim, string description, string hours, string hourlyRate, string date, string filename)
         {
             //temp message
             string message = "";
 
             //to get user data
-           // string user_Id = get_Id();
-           // string user_Email = get_email();
+            string user_Id = getId();
+            string user_Email = getEmail(user_Id);
 
-            decimal total = (decimal)hours * hourlyRate;
-            
+            string total = "" + decimal.Parse(hours) * decimal.Parse(hourlyRate);
+            Console.WriteLine(total);
+
             string query = "INSERT INTO claims VALUES();";
 
             try
@@ -112,22 +114,39 @@ namespace TheGym.Models
 
         }
 
-        public string getEmail()
+        public string getEmail(string user_Id)
         {
             //hold the email
             string hold_email = "";
 
             try
             {
-                using (SqlConnection connects = new SqlConnection(connection.connecting()))
+                using (SqlConnection sqlconnects = new SqlConnection(connection.connecting()))
                 {
                     //open connection
-                    connects.Open();
+                    sqlconnects.Open();
 
-                    using (SqlCommand prepare = new SqlCommand("SELECT * FROM claims", connects))
+                    using (SqlCommand prepare = new SqlCommand("SELECT user_email FROM users WHERE user_id = @user_id", sqlconnects))
                     {
+                        prepare.Parameters.AddWithValue("@ussr_id", user_Id);
 
+                        using (SqlDataReader getEmail = prepare.ExecuteReader())
+                        {
+                            if (getEmail.Read())
+                            {
+                                //check all but one
+                                while (getEmail.Read())
+                                {
+                                    // then get email
+                                    hold_email = getEmail["user_email"].ToString();
+                                }
+                            }
+
+                            getEmail.Close();
+                        }
                     }
+
+                    sqlconnects.Close();
                 }
             }
             catch (SqlException sqlError)
@@ -139,6 +158,15 @@ namespace TheGym.Models
 
             }
             return hold_email;
+        }
+
+
+
+        public string getId()
+        {
+            string hold_id = ""; 
+
+            return hold_id;
         }
 
     }
