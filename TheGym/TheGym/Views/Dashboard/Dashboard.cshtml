@@ -1,4 +1,5 @@
-﻿
+﻿@model TheGym.Models.GetClaims
+
 @{
     ViewData["Title"] = "Dashboard";
 }
@@ -153,23 +154,35 @@
                         </tr>
                     </thead> 
                     <tbody>
-                        <tr>
-                            <td>004</td>
-                            <td>Breach</td>
-                            <td>They hacked my acc</td>
-                            <td>6hr</td>
-                            <td>$10</td>
-                            <td>$100</td>
-                            <td>02/10/2024</td>
-                            <td>Nkosana</td>
-                            <td>Pending</td>
-                            <td>14/11/2024</td>
-                            <td><div class="d-flex flex-column">
-                                    <a class="btn btn-secondary btn-sm mb-2" asp-controller="Claim" asp-action="Edit" asp-route-id="">Edit</a>
-                                    <a class="btn btn-primary btn-sm" asp-controller="Claim" asp-action="Delete" asp-route-id="">Delete</a>
-                                </div>
-                            </td>
-                        </tr>
+
+                        @if(Model?.Claims != null)  
+                        {
+                            @foreach(var claim in Model.Claims)
+                            {
+                                <tr>
+                                    <td>@claim.ClaimId</td>
+                                    <td>@claim.TypeOfClaim</td>
+                                    <td>@claim.ClaimDescription</td>
+                                    <td>@claim.HoursWorked</td>
+                                    <td>@claim.HourlyRate</td>
+                                    <td>@claim.TotalWorkClaim</td>
+                                    <td>@claim.DateFiled</td>
+                                    <td>@claim.AssignedTo</td>
+                                    <td>@claim.Status</td>
+                                    <td>@claim.DateResolved</td>
+                                    <td>
+                                        <div class="d-flex flex-column">
+                                            <a class="btn btn-secondary btn-sm mb-2" asp-controller="Claim" asp-action="Edit" asp-route-id="">Edit</a>
+                                            <a class="btn btn-primary btn-sm" asp-controller="Claim" asp-action="Delete" asp-route-id="">Delete</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr><td colspan="11">No claims found.</td></tr>
+                        }
                     </tbody>
                     <tfoot>
                         <tr>

@@ -22,10 +22,10 @@ namespace TheGym.Models
         public string TypeOfClaim { get; set; } = "";
 
         /// <summary>
-        //[Required(ErrorMessage = "Type Of Claim is required")]
+        [Required(ErrorMessage = "Type Of Claim is required")]
         /// </summary>
         [DataType(DataType.Text)]
-        [MaxLength(500, ErrorMessage = "Claim description cannot exceed 500 characters")]
+        [MaxLength(250, ErrorMessage = "Claim description cannot exceed 500 characters")]
         public string ClaimDescription { get; set; } = "";
 
         [Required(ErrorMessage = "Hours worked are required")]
@@ -46,7 +46,7 @@ namespace TheGym.Models
 
         //[Required(ErrorMessage = "Status is required")]
         [MaxLength(50, ErrorMessage = "Status cannot exceed 50 characters")]
-        public string? Status { get; set; }    // Claim status: Pending, Approved, Denied
+        public string Status { get; set; } = "";   // Claim status: Pending, Approved, Denied
 
         [Display(Name = "Upload File")]
         public IFormFile? File { get; set; }
@@ -66,8 +66,8 @@ namespace TheGym.Models
 
         Connection connection = new Connection();
 
-        //Method to check user
-        public string InsertClaim(string name, string surname, string typeOfClaim, string description, string hours, string hourlyRate, string date, string filename)
+        //Method to insert claim
+        public string InsertClaim(string name, string surname, string typeOfClaim, string description, string hours, string hourlyRate, string datefiled, string filename)
         {
             //temp message
             string message = "";
@@ -76,14 +76,20 @@ namespace TheGym.Models
             string user_Id = getId();
             string user_Email = getEmail(user_Id);
 
-            string total = "" + decimal.Parse(hours) * decimal.Parse(hourlyRate);
+            string total_work_claim = "" + decimal.Parse(hours) * decimal.Parse(hourlyRate);
             //Console.WriteLine(total);
+            string assignedTo = "Jake"; 
+            string status = "pending";
 
             Console.WriteLine($"User email: {user_Email} \nUser id: {user_Id} \nName: {name} \nSurname: {surname} \nType Of Claim: {typeOfClaim} " +
-                $"\nDescription: {description} \nHours: {hours} \nHourly Rate: {hourlyRate} \nDate: {date} \nFile Name: {filename} \nTotal: {total}");
+                $"\nDescription: {description} \nHours: {hours} \nHourly Rate: {hourlyRate} \nDate: {datefiled} \nFile Name: {filename} \nTotal: {total_work_claim}");
 
-            /*
-            string query = "INSERT INTO claims VALUES();";
+
+            string query = "INSERT INTO claims (user_id, claimer_name, claimer_surname, type_of_claim, description, hours_worked, hourly_rate, " +
+                             "total_work_claim, date_filled, assigned_to, status, user_contact_email) " +
+                         $"VALUES ({user_Id}, '{name}', '{surname}', '{typeOfClaim}', '{description}', {hours}, {hourlyRate}, {total_work_claim}, " +
+                         $"'{datefiled}', '{assignedTo}', '{status}', '{user_Email}');";
+
 
             try
             {
@@ -104,6 +110,9 @@ namespace TheGym.Models
                         message = "done";
                     }
 
+                    //then close
+                    sqlConnects.Close();
+
                 }
             }
             catch (SqlException sqlError)
@@ -113,7 +122,7 @@ namespace TheGym.Models
             catch (IOException error)
             {
                 message = error.Message;
-            }*/
+            }
             return message;
 
 
