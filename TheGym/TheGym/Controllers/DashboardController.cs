@@ -1,16 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using TheGym.Models;
 
 namespace TheGym.Controllers
 {
     public class DashboardController : Controller
     {
         //Normal user
-        public IActionResult Dashboard()
+        public IActionResult Dashboard(GetClaims model)
         {
             //when the dashboard loads it must check the connection
             try
             {
+                //var model = new GetClaims();
                 Connection connection = new Connection();
 
                 using (SqlConnection sqlconnection = new SqlConnection(connection.connecting()))
@@ -18,6 +20,7 @@ namespace TheGym.Controllers
                     sqlconnection.Open();
                     Console.WriteLine("Connected");
                     sqlconnection.Close();
+                   
                 }
 
             }
@@ -30,7 +33,7 @@ namespace TheGym.Controllers
                 Console.WriteLine("Error: " + error.Message);
             }
 
-            return View();
+            return View(model);
         }
 
         //PC 
