@@ -58,7 +58,7 @@
             </li>
 
             <li class="logout">
-                <a href="#">
+                <a asp-controller="Account" asp-action="Logout">
                     <i class="bi bi-box-arrow-left"></i>
                     <span>Logout</span>
                 </a>
@@ -88,8 +88,8 @@
         <!--Tebular-->
         <div class="tabular-wrapper">
             <div class="d-flex justify-content-between align-items-center">
-                <h3 classs="main-title">Your Request Claims</h3>
-                <a class="btn btn-success mb-2" asp-controller="" asp-action="">View Histroy</a>
+                <h3 classs="main-title">All Claims Made In The Company</h3>
+                <a class="btn btn-success mb-2" asp-controller="" asp-action="">Report Claim</a>
             </div>
 
             <div class="table-container">
@@ -106,28 +106,33 @@
                             <th>Asigned To</th>
                             <th>Status</th>
                             <th>Resolution Date</th>
-                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>004</td>
-                            <td>Breach</td>
-                            <td>They hacked my acc</td>
-                            <td>6hr</td>
-                            <td>$10</td>
-                            <td>$100</td>
-                            <td>02/10/2024</td>
-                            <td>Nkosana</td>
-                            <td>Pending</td>
-                            <td>14/11/2024</td>
-                            <td>
-                                <div class="d-flex flex-column">
-                                    <a class="btn btn-secondary btn-sm mb-2" asp-controller="" asp-action="" asp-route-id="">Approve</a>
-                                    <a class="btn btn-primary btn-sm" asp-controller="" asp-action="" asp-route-id="">Deny</a>
-                                </div>
+                         @if(Model?.Claims != null)  
+                        {
+                            @foreach(var claim in Model.Claims)
+                            {
+                                <tr>
+                                    <td>@claim.ClaimId</td>
+                                    <td>@claim.TypeOfClaim</td>
+                                    <td>@claim.ClaimDescription</td>
+                                    <td>@claim.HoursWorked hr</td>
+                                    <td>R @claim.HourlyRate</td>
+                                    <td>R @claim.TotalWorkClaim</td>
+                                    <td>@claim.DateFiled</td>
+                                    <td>@claim.AssignedTo</td>
+                                    <td>@claim.Status</td>
+                                    <td>@claim.DateResolved</td>
+                                    <td>
                             </td>
                         </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr><td colspan="11">No claims found.</td></tr>
+                        }
                     </tbody>
                     <tfoot>
                         <tr>
