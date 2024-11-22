@@ -163,17 +163,17 @@
                                     <td>@claim.ClaimId</td>
                                     <td>@claim.TypeOfClaim</td>
                                     <td>@claim.ClaimDescription</td>
-                                    <td>@claim.HoursWorked</td>
-                                    <td>@claim.HourlyRate</td>
-                                    <td>@claim.TotalWorkClaim</td>
+                                    <td>@claim.HoursWorked hr</td>
+                                    <td>R @claim.HourlyRate</td>
+                                    <td>R @claim.TotalWorkClaim</td>
                                     <td>@claim.DateFiled</td>
                                     <td>@claim.AssignedTo</td>
                                     <td>@claim.Status</td>
                                     <td>@claim.DateResolved</td>
                                     <td>
                                         <div class="d-flex flex-column">
-                                            <a class="btn btn-secondary btn-sm mb-2" asp-controller="Claim" asp-action="Edit" asp-route-id="">Edit</a>
-                                            <a class="btn btn-primary btn-sm" asp-controller="Claim" asp-action="Delete" asp-route-id="">Delete</a>
+                                            <a class="btn btn-secondary btn-sm mb-2" asp-controller="Claim" asp-action="EditClaim" asp-route-id="@claim.ClaimId">Edit</a>
+                                            <a class="btn btn-primary btn-sm" asp-controller="Claim" asp-action="Delete" asp-route-id="@claim.ClaimId">Delete</a>
                                         </div>
                                     </td>
                                 </tr>

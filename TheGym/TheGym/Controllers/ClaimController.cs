@@ -10,12 +10,7 @@ namespace TheGym.Controllers
     public class ClaimController : Controller
     {
 
-        private readonly ILogger<UserController> _logger;
-
-        public ClaimController(ILogger<UserController> logger)
-        {
-            _logger = logger;
-        }
+      
 
         // This method returns the view for the create form.
         public IActionResult CreateClaim()
@@ -47,10 +42,9 @@ namespace TheGym.Controllers
             string hoursWorked = claimModel.HoursWorked.ToString();
             string hourlyRate = claimModel.HourlyRate.ToString();
 
-            claimModel.DateFiled = DateTime.Now; // Capture the current date
-            DateTime date = claimModel.DateFiled;
-            string dateFiled = date.ToString("yyyy/MM/dd");
-
+            // Capture the current date and format it as a string
+            string dateFiled = DateTime.Now.ToString("yyyy/MM/dd");
+            claimModel.DateFiled = dateFiled;
             string filename = "no file";
 
             //File info
@@ -86,63 +80,104 @@ namespace TheGym.Controllers
             */
 
             //Insert the claaim in the database
-            string message = claimModel.InsertClaim(name, surname, typeOfClaim, claimDescription, hoursWorked, hourlyRate, dateFiled, filename); 
+            string message = claimModel.InsertClaim(name, surname, typeOfClaim, claimDescription, hoursWorked, hourlyRate, dateFiled, filename);
 
-            /*
-            if(message == "done")
+
+            if (message == "done")
             {
-                Console.WriteLine(message);
+                Console.WriteLine("Successfully added claim");
             }
-            */
+
 
             // This renders the view from Views/Home/CreateClaim.cshtml
-            return RedirectToAction("Dashboard","Dashboard");
+            return RedirectToAction("Dashboard", "Dashboard");
         }
 
-
-
-
-
-        /*
-        private readonly ApplicationDbContext context;
-
-        //ctor
-        public ClaimController(ApplicationDbContext context)
+        // GET: Edit Claim
+        public IActionResult EditClaim(int id)
         {
-            this.context = context;
+            // Fetch the claim from the database using the claim ID
+            Claim claim = GetClaimById(id);
 
-        }
-
-        public IActionResult Index()
-        {
-            //CRUDE (CREATE UPDTAE DELETE)
-
-            var claim = context.Claims.ToList();//converting all informaton/Data to a list
-
-            return View(claim);
-        }
-
-        // GET: Create Claim Form
-        public IActionResult CreateClaim()
-        {
-            return View(); // Render the claim creation form
-        }
-
-        // POST: Create a New Claim
-        [HttpPost]
-        public IActionResult CreateClaim(Claim claim)
-        {
-            if (ModelState.IsValid)
+            if (claim == null)
             {
-                context.Claims.Add(claim); // Add the claim to the database
-                context.SaveChanges();
-                return RedirectToAction("Index"); // Redirect back to the index page after saving
+                return RedirectToAction("Dashboard", "Dashboard"); // Redirect if not found
             }
-            return View(claim); // Return form with validation errors
+
+            return View(claim); // Return the view with the claim details
         }
 
-        */
+        // POST: Edit Claim
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditClaim(int id, Claim claimModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(claimModel); // Return view with validation errors
+            }
 
+            // Update the claim in the database
+            string message = UpdateClaim(claimModel);
+
+            if (message != "done")
+            {
+                ModelState.AddModelError("", message); // Add error message if update fails
+                return View(claimModel);
+            }
+
+            return RedirectToAction("Index"); // Redirect to the index after editing
         }
 
+        // GET: Delete Claim
+        public IActionResult Delete(int id)
+        {
+            // Fetch the claim from the database using the claim ID
+            Claim claim = GetClaimById(id);
+
+            if (claim == null)
+            {
+                return RedirectToAction("Dashboard", "Dashboard"); // Redirect if not found
+            }
+
+            return View(claim); // Return the view with the claim details
+        }
+
+        // POST: Delete Claim
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            // Delete the claim from the database
+            string message = DeleteClaim(id);
+
+            if (message != "done")
+            {
+                ModelState.AddModelError("", message); // Add error message if delete fails
+                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Index"); // Redirect to the index after deletion
+        }
+
+        // Helper methods (implement these)
+        private Claim GetClaimById(int id)
+        {
+            // Replace this with your actual data access logic
+            return new Claim().GetClaimById(id); // Assuming you have a method in your Claim class
+        }
+
+        private string UpdateClaim(Claim claim)
+        {
+            // Replace this with your actual data access logic
+            return claim.UpdateClaim(claim); // Assuming you have an UpdateClaim method in your Claim class
+        }
+
+        private string DeleteClaim(int id)
+        {
+            // Replace this with your actual data access logic
+            return new Claim().DeleteClaim(id); // Assuming you have a DeleteClaim method in your Claim class
+        }
     }
+
+}

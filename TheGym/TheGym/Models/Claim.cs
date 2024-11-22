@@ -21,28 +21,27 @@ namespace TheGym.Models
         [DataType(DataType.Text)]
         public string TypeOfClaim { get; set; } = "";
 
-        /// <summary>
+        public string? ClaimId { get; set; }
+
+
         [Required(ErrorMessage = "Type Of Claim is required")]
-        /// </summary>
         [DataType(DataType.Text)]
         [MaxLength(250, ErrorMessage = "Claim description cannot exceed 500 characters")]
         public string ClaimDescription { get; set; } = "";
 
         [Required(ErrorMessage = "Hours worked are required")]
-        [Range(1, 24, ErrorMessage = "Hours worked must be between 1 and 24")]
-        public int HoursWorked { get; set; }
+        [RegularExpression(@"^\d+$", ErrorMessage = "Hours worked must be a valid number")]
+        public string HoursWorked { get; set; } = "";  // Keep as string
 
         [Required(ErrorMessage = "Hourly rate is required")]
-        [Range(0.01, 1000.00, ErrorMessage = "Hourly rate must be between 0.01 and 1000.00")]
-        public decimal HourlyRate { get; set; }
+        [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "Hourly rate must be a valid decimal number")]
+        public string HourlyRate { get; set; } = "";  // Keep as string
 
-        //[Required(ErrorMessage = "Claim amount is required")]
-        //[Range(0.01, double.MaxValue, ErrorMessage = "Claim amount must be greater than 0")]
-        public decimal ClaimAmount { get; set; }  // Claim amount
+        public string ClaimAmount { get; set; } = "";  // Keep as string
 
-        [Required(ErrorMessage = "Claim month is required")]
+        //[Required(ErrorMessage = "Claim month is required")]
         [DataType(DataType.Date, ErrorMessage = "Invalid date format")]
-        public DateTime DateFiled { get; set; } // Date of the claim
+        public string DateFiled { get; set; } = "";
 
         //[Required(ErrorMessage = "Status is required")]
         [MaxLength(50, ErrorMessage = "Status cannot exceed 50 characters")]
@@ -224,6 +223,94 @@ namespace TheGym.Models
             }
 
             return hold_id;
+        }
+
+        // Method to get a claim by ID
+        public Claim GetClaimById(int id)
+        {
+            Claim claim = null;
+            string query = "SELECT * FROM claims WHERE claim_id = @ClaimId";
+
+            using (SqlConnection sqlConnection = new SqlConnection(connection.connecting()))
+            {
+                sqlConnection.Open();
+                using (SqlCommand command = new SqlCommand(query, sqlConnection))
+                {
+                    command.Parameters.AddWithValue("@ClaimId", id);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            claim = new Claim
+                            {
+                                ClaimId = reader["claim_id"].ToString(), // Convert to string
+                                Name = reader["claimer_name"].ToString(),
+                                Surname = reader["claimer_surname"].ToString(),
+                                TypeOfClaim = reader["type_of_claim"].ToString(),
+                                ClaimDescription = reader["description"].ToString(),
+                                HoursWorked = reader["hours_worked"].ToString(), 
+                                HourlyRate = reader["hourly_rate"].ToString(), 
+                                DateFiled = reader["date_filled"].ToString(), 
+                                Status = reader["status"].ToString(),
+                                // Populate other properties as needed
+                            };
+                        }
+                    }
+                }
+            }
+
+            return claim;
+        }
+
+        // Method to update a claim
+        public string UpdateClaim(Claim updatedClaim)
+        {
+            string message = "";
+            string query = "UPDATE claims SET claimer_name = @Name, claimer_surname = @Surname, type_of_claim = @TypeOfClaim, " +
+                           "description = @Description, hours_worked = @HoursWorked, hourly_rate = @HourlyRate, " +
+                           "date_filled = @DateFiled, status = @Status WHERE claim_id = @ClaimId";
+
+            using (SqlConnection sqlConnection = new SqlConnection(connection.connecting()))
+            {
+                sqlConnection.Open();
+                using (SqlCommand command = new SqlCommand(query, sqlConnection))
+                {
+                    command.Parameters.AddWithValue("@ClaimId", updatedClaim.ClaimId);
+                    command.Parameters.AddWithValue("@Name", updatedClaim.Name);
+                    command.Parameters.AddWithValue("@Surname", updatedClaim.Surname);
+                    command.Parameters.AddWithValue("@TypeOfClaim", updatedClaim.TypeOfClaim);
+                    command.Parameters.AddWithValue("@Description", updatedClaim.ClaimDescription);
+                    command.Parameters.AddWithValue("@HoursWorked", updatedClaim.HoursWorked);
+                    command.Parameters.AddWithValue("@HourlyRate", updatedClaim.HourlyRate);
+                    command.Parameters.AddWithValue("@DateFiled", updatedClaim.DateFiled);
+                    command.Parameters.AddWithValue("@Status", updatedClaim.Status);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+                    message = rowsAffected > 0 ? "done" : "Claim not found.";
+                }
+            }
+
+            return message;
+        }
+
+        // Method to delete a claim
+        public string DeleteClaim(int id)
+        {
+            string message = "";
+            string query = "DELETE FROM claims WHERE claim_id = @ClaimId";
+
+            using (SqlConnection sqlConnection = new SqlConnection(connection.connecting()))
+            {
+                sqlConnection.Open();
+                using (SqlCommand command = new SqlCommand(query, sqlConnection))
+                {
+                    command.Parameters.AddWithValue("@ClaimId", id);
+                    int rowsAffected = command.ExecuteNonQuery();
+                    message = rowsAffected > 0 ? "done" : "Claim not found.";
+                }
+            }
+
+            return message;
         }
 
     }
