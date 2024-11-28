@@ -141,7 +141,7 @@ namespace TheGym.Controllers
         }
 
         // GET: Delete Claim
-        public IActionResult Delete(int id)
+        public IActionResult DeleteClaim(int id)
         {
             // Fetch the claim from the database using the claim ID
             Claim claim = GetClaimById(id);
@@ -154,22 +154,37 @@ namespace TheGym.Controllers
             return View(claim); // Return the view with the claim details
         }
 
-        // POST: Delete Claim
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
-        {
-            // Delete the claim from the database
-            string message = DeleteClaim(id);
 
-            if (message != "done")
+
+        
+       
+
+
+        // POST: Delete Claim
+        [HttpPost, ActionName("DeleteConfirmed")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(Claim claim)
+        {
+            // Try to convert ClaimId to int
+            if (int.TryParse(claim.ClaimId, out int claimId))
             {
-                ModelState.AddModelError("", message); // Add error message if delete fails
-                return RedirectToAction("Index");
+                // Delete the claim from the database
+                string message = DeleteClaimById(claimId);
+
+                if (message != "done")
+                {
+                    ModelState.AddModelError("", message); // Add error message if delete fails
+                    return RedirectToAction("Dashboard", "Dashboard");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Invalid Claim ID."); // Handle invalid ID
             }
 
-            return RedirectToAction("Index"); // Redirect to the index after deletion
+            return RedirectToAction("Dashboard", "Dashboard"); // Redirect to the index after deletion
         }
+
 
         // Helper methods (implement these)
         private Claim GetClaimById(int id)
@@ -184,7 +199,7 @@ namespace TheGym.Controllers
             return claim.UpdateClaim(claim);
         }
 
-        private string DeleteClaim(int id)
+        private string DeleteClaimById(int id)
         {
             //DeleteClaim method in your Claim class
             return new Claim().DeleteClaim(id); 

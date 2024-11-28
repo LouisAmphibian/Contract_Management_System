@@ -173,7 +173,7 @@
                                     <td>
                                         <div class="d-flex flex-column">
                                             <a class="btn btn-secondary btn-sm mb-2" asp-controller="Claim" asp-action="EditClaim" asp-route-id="@claim.ClaimId">Edit</a>
-                                            <a class="btn btn-primary btn-sm" asp-controller="Claim" asp-action="Delete" asp-route-id="@claim.ClaimId">Delete</a>
+                                            <a class="btn btn-primary btn-sm" href="#" onclick="confirmDelete('@claim.ClaimId'); return false;">Delete</a>
                                         </div>
                                     </td>
                                 </tr>
@@ -196,3 +196,12 @@
     </div>
 
 </div>
+
+<script>
+    function confirmDelete(claimId) {
+        if (confirm("Are you sure you want to delete this claim?")) {
+            // Redirect to the delete action
+            window.location.href = '@Url.Action("DeleteClaim", "Claim")/' + claimId;
+        }
+    }
+</script>
