@@ -163,20 +163,20 @@ namespace TheGym.Controllers
         // Helper methods (implement these)
         private Claim GetClaimById(int id)
         {
-            // Replace this with your actual data access logic
+            //get claimid method in your Claim class
             return new Claim().GetClaimById(id); // Assuming you have a method in your Claim class
         }
 
         private string UpdateClaim(Claim claim)
         {
-            // Replace this with your actual data access logic
-            return claim.UpdateClaim(claim); // Assuming you have an UpdateClaim method in your Claim class
+            //UpdateClaim method in your Claim class
+            return claim.UpdateClaim(claim);
         }
 
         private string DeleteClaim(int id)
         {
-            // Replace this with your actual data access logic
-            return new Claim().DeleteClaim(id); // Assuming you have a DeleteClaim method in your Claim class
+            //DeleteClaim method in your Claim class
+            return new Claim().DeleteClaim(id); 
         }
     }
 
