@@ -13,8 +13,8 @@
             <div class="col-md-6">
                 <label class="form-label" for="name">Your Name</label>
                     <input id="name"
-                           class="form-control" 
-                           asp-for="Name" required />
+                       class="claim-input-field"
+                       asp-for="Name" required />
                     <span asp-validation-for="Name" class="text-danger"></span>
             </div>
 
@@ -22,7 +22,7 @@
             <div class="col-md-6">
                 <label class="form-label" for="surname">Your Surname</label>
                     <input id="surname"
-                           class="form-control"
+                       class="claim-input-field"
                            asp-for="Surname" required />
                     <span asp-validation-for="Surname" class="text-danger"></span>
             </div>
@@ -33,7 +33,7 @@
               <div class="col-6">
                 <label class="form-label" for="type">Type Of Claim</label>
                     <select id="type"
-                        class="form-control" 
+                        class="claim-input-field"
                         asp-for="TypeOfClaim" required>
                         <option selected disabled>Select a claim</option>
                         <option value="employee benefits">Employee Benefits</option>
@@ -48,7 +48,7 @@
             <div class="col-6">
                 <label class="form-label" for="hoursworked">Hours Worked</label>
                     <input id="hoursworked"
-                           class="form-control"
+                       class="claim-input-field"
                            asp-for="HoursWorked" required />
                     <span asp-validation-for="HoursWorked" class="text-danger"></span>
             </div>
@@ -58,8 +58,8 @@
             <div class="col-6">
                 <label class="form-label" for="hoursrate">Hourly Rate ($)</label>
                     <input id="hoursrate"
-                           class="form-control" 
-                           asp-for="HourlyRate" required />
+                   class="claim-input-field"
+                   asp-for="HourlyRate" required />
                     <span asp-validation-for="HourlyRate" class="text-danger"></span>
             </div>
 
@@ -77,7 +77,7 @@
             <div class="col-12">
                 <label class="form-label" for="description">Description</label>
                     <textarea id="description"
-                           class="form-control" 
+                      class="claim-input-field"
                            asp-for="ClaimDescription" required ></textarea>
                     <span asp-validation-for="ClaimDescription" class="text-danger"></span>
             </div>
