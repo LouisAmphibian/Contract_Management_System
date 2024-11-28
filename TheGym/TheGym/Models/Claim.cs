@@ -267,8 +267,8 @@ namespace TheGym.Models
         {
             string message = "";
             string query = "UPDATE claims SET claimer_name = @Name, claimer_surname = @Surname, type_of_claim = @TypeOfClaim, " +
-                           "description = @Description, hours_worked = @HoursWorked, hourly_rate = @HourlyRate, " +
-                           "date_filled = @DateFiled, status = @Status WHERE claim_id = @ClaimId";
+               "description = @Description, hours_worked = @HoursWorked, hourly_rate = @HourlyRate, " +
+               "date_filled = @DateFiled WHERE claim_id = @ClaimId";
 
             using (SqlConnection sqlConnection = new SqlConnection(connection.connecting()))
             {

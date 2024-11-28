@@ -117,6 +117,17 @@ namespace TheGym.Controllers
                 return View(claimModel); // Return view with validation errors
             }
 
+            // Fetch the existing claim to ensure ClaimId is set
+            Claim existingClaim = GetClaimById(id);
+            if (existingClaim == null)
+            {
+                ModelState.AddModelError("", "Claim not found.");
+                return View(claimModel);
+            }
+
+            // Setting the ClaimId from the existing claim
+            claimModel.ClaimId = existingClaim.ClaimId;
+
             // Update the claim in the database
             string message = UpdateClaim(claimModel);
 
@@ -126,7 +137,7 @@ namespace TheGym.Controllers
                 return View(claimModel);
             }
 
-            return RedirectToAction("Index"); // Redirect to the index after editing
+            return RedirectToAction("Dashboard", "Dashboard"); // Redirect to the dashboard after editing
         }
 
         // GET: Delete Claim
