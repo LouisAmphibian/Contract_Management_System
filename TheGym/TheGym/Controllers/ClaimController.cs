@@ -10,7 +10,11 @@ namespace TheGym.Controllers
     public class ClaimController : Controller
     {
 
-      
+        public IActionResult Index()
+        {
+            return RedirectToAction("Dashboard", "Dashboard");
+        }
+
 
         // This method returns the view for the create form.
         public IActionResult CreateClaim()
