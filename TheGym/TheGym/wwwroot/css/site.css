@@ -849,6 +849,19 @@ tfoot td{
 }
 
 
+/* Autofill styles for input fields */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #190482 inset !important; /* Background color */
+    box-shadow: 0 0 0 30px #190482 inset !important; /* Background color */
+    -webkit-text-fill-color: white !important; /* Text color */
+}
+
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px #190482 inset !important; /* Background color */
+    box-shadow: 0 0 0 30px #190482 inset !important; /* Background color */
+    -webkit-text-fill-color: white !important; /* Text color */
+}
+
 .create-d textarea {
     width: 700px;
     height: 150px;
@@ -859,13 +872,17 @@ tfoot td{
 }
 
 .custom {
-    width: 300px;
+    width: 400px;
 }
 
-
-.claim-input-field {
-
+.btn-size{
+    width: 250px;
 }
+
+.btn-position{
+    padding-left: 650px;
+}
+
 
 
 

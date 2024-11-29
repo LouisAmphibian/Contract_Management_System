@@ -47,7 +47,7 @@
             <!-- Hours Worked -->
             <div class="col-6 create">
                 <label class="form-label" for="hoursworked">Hours Worked</label>
-                <input id="hoursworked underline"
+                <input id="hoursworked"
                        class="claim-input-field"
                            asp-for="HoursWorked" required />
                     <span asp-validation-for="HoursWorked" class="text-danger"></span>
@@ -84,14 +84,17 @@
            
 
             <!-- Buttons -->
-            <div class="row mt-4">
-                <div class="col-sm-4 offset-sm-4 d-grid">
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-                <div class="col-sm-4 d-grid">
-                    <a class="btn btn-outline-primary" asp-controller="Claim" asp-action="Index" role="button">Cancel</a>
+            <div class="btn-position">
+                <div class="row mt-4">
+                    <div class="col-sm-4 offset-sm-4 d-grid btn-size">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                    <div class="col-sm-4 d-grid btn-size">
+                        <a class="btn btn-outline-primary" asp-controller="Claim" asp-action="Index" role="button">Cancel</a>
+                    </div>
                 </div>
             </div>
+            
         </form>
    
 </div>
