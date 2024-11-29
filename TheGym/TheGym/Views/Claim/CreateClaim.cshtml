@@ -5,15 +5,15 @@
 
 <div class="row form-box">
     
-        <h2 class="text-center mb-4">New Claim</h2>
+        <h2 class="header">New Claim</h2>
 
     <form method="post" asp-controller="Claim" asp-action="CreateClaim" class="row g-3 claim_form" enctype="multipart/form-data">
             <!-- Your Name -->
-        <div class="row mb-3">
+        <div class="row mb-3 create">
             <div class="col-md-6">
                 <label class="form-label" for="name">Your Name</label>
                     <input id="name"
-                       class="claim-input-field"
+                       class="claim-input-field underline"
                        asp-for="Name" required />
                     <span asp-validation-for="Name" class="text-danger"></span>
             </div>
@@ -22,18 +22,18 @@
             <div class="col-md-6">
                 <label class="form-label" for="surname">Your Surname</label>
                     <input id="surname"
-                       class="claim-input-field"
+                       class="claim-input-field underline"
                            asp-for="Surname" required />
                     <span asp-validation-for="Surname" class="text-danger"></span>
             </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-3 ">
             <!-- Type of Claim -->
-              <div class="col-6">
+            <div class="col-6 ">
                 <label class="form-label" for="type">Type Of Claim</label>
                     <select id="type"
-                        class="claim-input-field"
+                        class="form-control custom"
                         asp-for="TypeOfClaim" required>
                         <option selected disabled>Select a claim</option>
                         <option value="employee benefits">Employee Benefits</option>
@@ -45,9 +45,9 @@
             </div>
 
             <!-- Hours Worked -->
-            <div class="col-6">
+            <div class="col-6 create">
                 <label class="form-label" for="hoursworked">Hours Worked</label>
-                    <input id="hoursworked"
+                <input id="hoursworked underline"
                        class="claim-input-field"
                            asp-for="HoursWorked" required />
                     <span asp-validation-for="HoursWorked" class="text-danger"></span>
@@ -55,26 +55,25 @@
         </div>
 
          <!-- Hourly Rate -->
-            <div class="col-6">
+        <div class="col-6 create">
                 <label class="form-label" for="hoursrate">Hourly Rate ($)</label>
                     <input id="hoursrate"
-                   class="claim-input-field"
+                   class="claim-input-field underline"
                    asp-for="HourlyRate" required />
                     <span asp-validation-for="HourlyRate" class="text-danger"></span>
             </div>
 
             <!--Upload-->
-            <div class="col-6">
+            <div class="col-6 ">
                 <label class="form-label" for="upload">Upload file [optional]</label>
                     <input id="upload"
                            asp-for="File"
-                           class="form-control" 
-                           />
+                   class="form-control custom" />
                     <span asp-validation-for="HourlyRate" class="text-danger"></span>
             </div>
 
              <!-- Description -->
-            <div class="col-12">
+        <div class="col-12 create-d">
                 <label class="form-label" for="description">Description</label>
                     <textarea id="description"
                       class="claim-input-field"

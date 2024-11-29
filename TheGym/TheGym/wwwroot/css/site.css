@@ -445,7 +445,7 @@ form {
     display: flex !important;
 }
 
-    .dashboard .sidebar {
+ .dashboard .sidebar {
         overflow: hidden !important;
         position: sticky;
         top: 0;
@@ -809,7 +809,62 @@ tfoot td{
     color: white;
 }
 /*Claim create/edit*/
+.header {
+    /* Adjust as needed */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 1000;
+    font-style: italic;
+    padding-left: 245px;
+    padding-top: 40px;
+    font-size: 50px;
+}
+
+.create label, .create-d label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+}
+
+.create input, .create label {
+    display: block;
+}
+
+.create-d label, .create-d textarea {
+    display: block;
+}
+
+.create input {
+    width: 350px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 3px solid white;
+    caret-color: white; /* Cursor (caret) color */
+    color: white;
+    transition: border-bottom-color 0.3s ease;
+}
+
+.create input:focus {
+    outline: none; /* Remove default outline */
+    border-bottom-color: limegreen; /* Change underline color on focus */
+}
+
+
+.create-d textarea {
+    width: 700px;
+    height: 150px;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 18px;
+    resize: none; /* Prevents resizing of the textarea */
+}
+
+.custom {
+    width: 300px;
+}
+
+
 .claim-input-field {
+
 }
 
 
