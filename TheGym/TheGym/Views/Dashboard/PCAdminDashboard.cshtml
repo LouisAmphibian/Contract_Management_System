@@ -1,4 +1,6 @@
-﻿@{
+﻿@model TheGym.Models.GetAllClaims
+
+@{
     ViewData["Title"] = "PC AdminDashboard";
 }
 <div class="dashboard">
@@ -103,7 +105,7 @@
                             <th>Hourly rate</th>
                             <th>Amount</th>
                             <th>Date Filed</th>
-                            <th>Asigned To</th>
+                            <th>Belongs To</th>
                             <th>Status</th>
                             <th>Resolution Date</th>
                             <th>Actions</th>
@@ -122,7 +124,7 @@
                                     <td>R @claim.HourlyRate</td>
                                     <td>R @claim.TotalWorkClaim</td>
                                     <td>@claim.DateFiled</td>
-                                    <td>@claim.AssignedTo</td>
+                                    <td>@claim.ClaimerName @claim.ClaimerSurname</td>
                                     <td>@claim.Status</td>
                                     <td>@claim.DateResolved</td>
                                     <td>

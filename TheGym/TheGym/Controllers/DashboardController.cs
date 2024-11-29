@@ -39,6 +39,8 @@ namespace TheGym.Controllers
         //PC 
         public IActionResult PCAdminDashboard()
         {
+            var model = new GetAllClaims();
+
             //when the dashboard loads it must check the connection
             try
             {
@@ -61,7 +63,7 @@ namespace TheGym.Controllers
                 Console.WriteLine("Error: " + error.Message);
             }
 
-            return View();
+            return View(model);
         }
 
 

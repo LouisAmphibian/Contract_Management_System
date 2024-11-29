@@ -36,7 +36,8 @@ namespace TheGym.Models
             }
         }
 
-        private string GetUserId()
+       
+            private string GetUserId()
         {
             string holdId = "";
             try
