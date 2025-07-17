@@ -1,7 +1,7 @@
-# Gym Contract Monthly Claim System (CMCS)
+# Contractly- Contract Monthly Claim System (CMCS)
 
 # Description
-The Gym Contract Monthly Claim System (CMCS) is a software application designed to simplify the management and processing of monthly claims linked to gym memberships. The system automates the claim submission and approval processes, tracks payment statuses, and maintains a comprehensive audit trail of all transactions.
+**Contractly**  is a Contract Monthly Claim System (CMCS) is a software application designed to simplify the management and processing of monthly claims linked to existing or new contract. It simplifies and automates the processes of submitting, approving, and tracking monthly claims. The system provides complete visibility into payment statuses and maintains a detailed audit trail of all transactions and administrative actions.
 
 ## Prerequisites
 ###Online
